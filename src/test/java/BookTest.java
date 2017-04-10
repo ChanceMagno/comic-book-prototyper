@@ -22,7 +22,10 @@ public class BookTest {
 
   @Test
   public void getBookName_returnsBookName_string() {
+<<<<<<< HEAD
     Book myBook = new Book("Comic One", 1);
+=======
+>>>>>>> master
     assertEquals("Comic One", myBook.getTitle());
   }
 
@@ -32,7 +35,4 @@ public class BookTest {
      myBook.save();
      assertTrue(myBook.getId() > 0);
    }
-
-
-
  }
