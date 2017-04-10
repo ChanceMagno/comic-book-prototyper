@@ -28,6 +28,224 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: books; Type: TABLE; Schema: public; Owner: nathanielmeyer
+--
+
+CREATE TABLE books (
+    id integer NOT NULL,
+    title character varying,
+    user_id integer
+);
+
+
+ALTER TABLE books OWNER TO nathanielmeyer;
+
+--
+-- Name: books_id_seq; Type: SEQUENCE; Schema: public; Owner: nathanielmeyer
+--
+
+CREATE SEQUENCE books_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE books_id_seq OWNER TO nathanielmeyer;
+
+--
+-- Name: books_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nathanielmeyer
+--
+
+ALTER SEQUENCE books_id_seq OWNED BY books.id;
+
+
+--
+-- Name: pages; Type: TABLE; Schema: public; Owner: nathanielmeyer
+--
+
+CREATE TABLE pages (
+    id integer NOT NULL,
+    book_id integer,
+    layout character varying
+);
+
+
+ALTER TABLE pages OWNER TO nathanielmeyer;
+
+--
+-- Name: pages_id_seq; Type: SEQUENCE; Schema: public; Owner: nathanielmeyer
+--
+
+CREATE SEQUENCE pages_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE pages_id_seq OWNER TO nathanielmeyer;
+
+--
+-- Name: pages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nathanielmeyer
+--
+
+ALTER SEQUENCE pages_id_seq OWNED BY pages.id;
+
+
+--
+-- Name: panels; Type: TABLE; Schema: public; Owner: nathanielmeyer
+--
+
+CREATE TABLE panels (
+    id integer NOT NULL,
+    page_id integer,
+    sequence integer,
+    dialog1 character varying,
+    dialog2 character varying,
+    narration character varying,
+    image_path character varying
+);
+
+
+ALTER TABLE panels OWNER TO nathanielmeyer;
+
+--
+-- Name: panels_id_seq; Type: SEQUENCE; Schema: public; Owner: nathanielmeyer
+--
+
+CREATE SEQUENCE panels_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE panels_id_seq OWNER TO nathanielmeyer;
+
+--
+-- Name: panels_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nathanielmeyer
+--
+
+ALTER SEQUENCE panels_id_seq OWNED BY panels.id;
+
+
+--
+-- Name: books id; Type: DEFAULT; Schema: public; Owner: nathanielmeyer
+--
+
+ALTER TABLE ONLY books ALTER COLUMN id SET DEFAULT nextval('books_id_seq'::regclass);
+
+
+--
+-- Name: pages id; Type: DEFAULT; Schema: public; Owner: nathanielmeyer
+--
+
+ALTER TABLE ONLY pages ALTER COLUMN id SET DEFAULT nextval('pages_id_seq'::regclass);
+
+
+--
+-- Name: panels id; Type: DEFAULT; Schema: public; Owner: nathanielmeyer
+--
+
+ALTER TABLE ONLY panels ALTER COLUMN id SET DEFAULT nextval('panels_id_seq'::regclass);
+
+
+--
+-- Data for Name: books; Type: TABLE DATA; Schema: public; Owner: nathanielmeyer
+--
+
+COPY books (id, title, user_id) FROM stdin;
+\.
+
+
+--
+-- Name: books_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nathanielmeyer
+--
+
+SELECT pg_catalog.setval('books_id_seq', 1, false);
+
+
+--
+-- Data for Name: pages; Type: TABLE DATA; Schema: public; Owner: nathanielmeyer
+--
+
+COPY pages (id, book_id, layout) FROM stdin;
+\.
+
+
+--
+-- Name: pages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nathanielmeyer
+--
+
+SELECT pg_catalog.setval('pages_id_seq', 1, false);
+
+
+--
+-- Data for Name: panels; Type: TABLE DATA; Schema: public; Owner: nathanielmeyer
+--
+
+COPY panels (id, page_id, sequence, dialog1, dialog2, narration, image_path) FROM stdin;
+\.
+
+
+--
+-- Name: panels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nathanielmeyer
+--
+
+SELECT pg_catalog.setval('panels_id_seq', 1, false);
+
+
+--
+-- Name: books books_pkey; Type: CONSTRAINT; Schema: public; Owner: nathanielmeyer
+--
+
+ALTER TABLE ONLY books
+    ADD CONSTRAINT books_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: pages pages_pkey; Type: CONSTRAINT; Schema: public; Owner: nathanielmeyer
+--
+
+ALTER TABLE ONLY pages
+    ADD CONSTRAINT pages_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: panels panels_pkey; Type: CONSTRAINT; Schema: public; Owner: nathanielmeyer
+--
+
+ALTER TABLE ONLY panels
+    ADD CONSTRAINT panels_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: pages pages_book_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nathanielmeyer
+--
+
+ALTER TABLE ONLY pages
+    ADD CONSTRAINT pages_book_id_fkey FOREIGN KEY (book_id) REFERENCES books(id);
+
+
+--
+-- Name: panels panels_page_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nathanielmeyer
+--
+
+ALTER TABLE ONLY panels
+    ADD CONSTRAINT panels_page_id_fkey FOREIGN KEY (page_id) REFERENCES pages(id);
+
+
 --
 -- PostgreSQL database dump complete
 --
