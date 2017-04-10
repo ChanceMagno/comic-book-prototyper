@@ -110,9 +110,6 @@ CREATE TABLE panels (
     id integer NOT NULL,
     page_id integer,
     sequence integer,
-    dialog1 character varying,
-    dialog2 character varying,
-    narration character varying,
     image_path character varying
 );
 
@@ -141,6 +138,44 @@ ALTER SEQUENCE panels_id_seq OWNED BY panels.id;
 
 
 --
+-- Name: texts; Type: TABLE; Schema: public; Owner: nathanielmeyer
+--
+
+CREATE TABLE texts (
+    id integer NOT NULL,
+    panel_id integer,
+    sequence integer,
+    box_style character varying,
+    font character varying,
+    orientation character varying,
+    speaker character varying
+);
+
+
+ALTER TABLE texts OWNER TO nathanielmeyer;
+
+--
+-- Name: texts_id_seq; Type: SEQUENCE; Schema: public; Owner: nathanielmeyer
+--
+
+CREATE SEQUENCE texts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE texts_id_seq OWNER TO nathanielmeyer;
+
+--
+-- Name: texts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nathanielmeyer
+--
+
+ALTER SEQUENCE texts_id_seq OWNED BY texts.id;
+
+
+--
 -- Name: books id; Type: DEFAULT; Schema: public; Owner: nathanielmeyer
 --
 
@@ -159,6 +194,13 @@ ALTER TABLE ONLY pages ALTER COLUMN id SET DEFAULT nextval('pages_id_seq'::regcl
 --
 
 ALTER TABLE ONLY panels ALTER COLUMN id SET DEFAULT nextval('panels_id_seq'::regclass);
+
+
+--
+-- Name: texts id; Type: DEFAULT; Schema: public; Owner: nathanielmeyer
+--
+
+ALTER TABLE ONLY texts ALTER COLUMN id SET DEFAULT nextval('texts_id_seq'::regclass);
 
 
 --
@@ -195,7 +237,7 @@ SELECT pg_catalog.setval('pages_id_seq', 1, false);
 -- Data for Name: panels; Type: TABLE DATA; Schema: public; Owner: nathanielmeyer
 --
 
-COPY panels (id, page_id, sequence, dialog1, dialog2, narration, image_path) FROM stdin;
+COPY panels (id, page_id, sequence, image_path) FROM stdin;
 \.
 
 
@@ -204,6 +246,21 @@ COPY panels (id, page_id, sequence, dialog1, dialog2, narration, image_path) FRO
 --
 
 SELECT pg_catalog.setval('panels_id_seq', 1, false);
+
+
+--
+-- Data for Name: texts; Type: TABLE DATA; Schema: public; Owner: nathanielmeyer
+--
+
+COPY texts (id, panel_id, sequence, box_style, font, orientation, speaker) FROM stdin;
+\.
+
+
+--
+-- Name: texts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nathanielmeyer
+--
+
+SELECT pg_catalog.setval('texts_id_seq', 1, false);
 
 
 --
@@ -228,6 +285,14 @@ ALTER TABLE ONLY pages
 
 ALTER TABLE ONLY panels
     ADD CONSTRAINT panels_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: texts texts_pkey; Type: CONSTRAINT; Schema: public; Owner: nathanielmeyer
+--
+
+ALTER TABLE ONLY texts
+    ADD CONSTRAINT texts_pkey PRIMARY KEY (id);
 
 
 --
