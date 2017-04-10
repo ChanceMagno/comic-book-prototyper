@@ -59,14 +59,14 @@ private String layout;
     }
 }
 
-  @Test
+  
   public static Page find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM pages WHERE id = :id;";
       Page page = con.createQuery(sql)
       .addParameter("id", id)
       .executeAndFetchFirst(Page.class);
-      return page
+      return page;
     }
   }
 
