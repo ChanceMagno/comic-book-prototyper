@@ -8,15 +8,15 @@ import java.util.TimerTask;
 import java.sql.Timestamp;
 
 public class Book {
-  private String name;
+  private String title;
   private int id;
 
-  public Book(String name) {
-    this.name = name;
+  public Book(String title) {
+    this.title = title;
   }
 
-  public String getName() {
-    return name;
+  public String getTitle() {
+    return title;
   }
 
   public int getId() {
@@ -25,9 +25,9 @@ public class Book {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO books(name) VALUES(:name)";
+      String sql = "INSERT INTO books(title) VALUES(:title)";
       this.id = (int) con.createQuery(sql, true)
-        .addParameter("name", this.name)
+        .addParameter("title", this.title)
         .executeUpdate()
         .getKey();
     }
