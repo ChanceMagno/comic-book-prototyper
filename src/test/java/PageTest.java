@@ -74,6 +74,16 @@ public class PageTest {
     assertEquals(null, Page.find(page1.getId()));
   }
 
+  @Test
+  public void getPanels_returnsAllPanelsBasedOnPageID_true() {
+    Book myBook = new Book("comic one", 1);
+    myBook.save();
+    Page page1 = new Page(myBook.getId(), "layout1");
+    page1.save();
+    ComicPanel panel = new ComicPanel(page1.getId(), 1);
+    assertEquals(panel, page1.getPanels(page1.getId()).get(0));
+  }
+
 
 
 }

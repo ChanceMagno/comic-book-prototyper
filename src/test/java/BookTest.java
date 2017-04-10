@@ -22,6 +22,7 @@ public class BookTest {
 
   @Test
   public void getBookName_returnsBookName_string() {
+    Book myBook = new Book("Comic One", 1);
     assertEquals("Comic One", myBook.getTitle());
   }
 
