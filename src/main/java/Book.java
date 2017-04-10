@@ -40,75 +40,60 @@ public class Book {
         .getKey();
     }
   }
-//new below
 
-// public static List<Book> all() {
-//   String sql = "SELECT id, title FROM books";
-//   try(Connection con = DB.sql2o.open()) {
-//     return con.createQuery(sql).executeAndFetch(Book.class);
-//   }
-// }
-//
-// public static Book find(int id) {
-//      try(Connection con = DB.sql2o.open()) {
-//        String sql = "SELECT * FROM books where id=:id";
-//        Book book = con.createQuery(sql)
-//          .addParameter("id", id)
-//          .executeAndFetchFirst(Book.class);
-//        return book;
-//      }
-//    }
-//
-//    public List<Client> getClients() {
-//    try(Connection con = DB.sql2o.open()) {
-//      String sql = "SELECT * FROM clients where bookId=:id";
-//      return con.createQuery(sql)
-//        .addParameter("id", this.id)
-//        .executeAndFetch(Client.class);
-//    }
-//  }
-//
-//    @Override
-//    public boolean equals(Object otherBook) {
-//      if (!(otherBook instanceof Book)) {
-//        return false;
-//      } else {
-//        Book newBook = (Book) otherBook;
-//        return this.getId() == newBook.getId() &&
-//               this.getName().equals(newBook.getName());
-//      }
-//  }
-//
-//   public void save() {
-//     try(Connection con = DB.sql2o.open()) {
-//       String sql = "INSERT INTO books(title) VALUES (:title)";
-//       this.id = (int) con.createQuery(sql, true)
-//         .addParameter("title", this.title)
-//         .executeUpdate()
-//         .getKey();
-//     }
-//   }
-//
-//   public void update(String title) {
-//   try(Connection con = DB.sql2o.open()) {
-//     String sql = "UPDATE books SET title = :title WHERE id = :id;";
-//     con.createQuery(sql)
-//       .addParameter("title", title)
-//       .addParameter("id", id)
-//       .executeUpdate();
-//     }
-//   }
-//
-//   public void delete() {
-//    try(Connection con = DB.sql2o.open()) {
-//      String sql = "DELETE FROM books WHERE id = :id;";
-//      con.createQuery(sql)
-//        .addParameter("id", id)
-//        .executeUpdate();
-//      }
-//    }
+  public static List<Book> all() {
+    String sql = "SELECT id, title FROM books";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Book.class);
+    }
+  }
 
+  public static Book find(int id) {
+     try(Connection con = DB.sql2o.open()) {
+       String sql = "SELECT * FROM books where id=:id";
+       Book book = con.createQuery(sql)
+         .addParameter("id", id)
+         .executeAndFetchFirst(Book.class);
+       return book;
+     }
+   }
 
+   public List<Page> getPages() {
+   try(Connection con = DB.sql2o.open()) {
+     String sql = "SELECT * FROM pages where bookId=:id";
+     return con.createQuery(sql)
+       .addParameter("id", this.id)
+       .executeAndFetch(Page.class);
+   }
+ }
 
+  @Override
+   public boolean equals(Object otherBook) {
+     if (!(otherBook instanceof Book)) {
+       return false;
+     } else {
+       Book newBook = (Book) otherBook;
+       return this.getId() == newBook.getId() &&
+              this.getTitle().equals(newBook.getTitle());
+     }
+ }
 
+  public void update(String title) {
+  try(Connection con = DB.sql2o.open()) {
+    String sql = "UPDATE books SET title = :title WHERE id = :id;";
+    con.createQuery(sql)
+      .addParameter("title", title)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
+
+  public void delete() {
+   try(Connection con = DB.sql2o.open()) {
+     String sql = "DELETE FROM books WHERE id = :id;";
+     con.createQuery(sql)
+       .addParameter("id", id)
+       .executeUpdate();
+     }
+   }
 }//end of file

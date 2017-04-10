@@ -42,7 +42,7 @@ public class ComicPanelTest {
   @Test
   public void save_assignsIdAndSavesObjectToDatabase_true() {
     Book testBook = new Book("Jefferson Conflict");
-    Page testPage = new Page()
+    Page testPage = new Page();
     ComicPanel testComicPanel = new ComicPanel(1, 2);
     testComicPanel.setImagePath("/img/bozo.jpg");
     testComicPanel.save();
