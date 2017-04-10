@@ -215,7 +215,7 @@ COPY books (id, title, user_id) FROM stdin;
 -- Name: books_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nathanielmeyer
 --
 
-SELECT pg_catalog.setval('books_id_seq', 1, false);
+SELECT pg_catalog.setval('books_id_seq', 91, true);
 
 
 --
@@ -230,7 +230,7 @@ COPY pages (id, book_id, layout) FROM stdin;
 -- Name: pages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nathanielmeyer
 --
 
-SELECT pg_catalog.setval('pages_id_seq', 1, false);
+SELECT pg_catalog.setval('pages_id_seq', 56, true);
 
 
 --
@@ -245,7 +245,7 @@ COPY panels (id, page_id, sequence, image_path) FROM stdin;
 -- Name: panels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nathanielmeyer
 --
 
-SELECT pg_catalog.setval('panels_id_seq', 1, false);
+SELECT pg_catalog.setval('panels_id_seq', 33, true);
 
 
 --
