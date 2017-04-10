@@ -25,8 +25,16 @@ public class ComicPanel {
     return page_id;
   }
 
+  public void setPageId(int page_id) {
+    this.page_id = page_id;
+  }
+
   public int getSequence() {
     return sequence;
+  }
+
+  public void setSequence(int sequence) {
+    this.sequence = sequence;
   }
 
   public String getImagePath() {
@@ -49,6 +57,18 @@ public class ComicPanel {
     }
   }
 
+  public void update() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE panels SET page_id = :page_id, sequence = :sequence, image_path = :image_path WHERE id = :id;";
+      con.createQuery(sql)
+        .addParameter("page_id", this.page_id)
+        .addParameter("sequence", this.sequence)
+        .addParameter("image_path", this.image_path)
+        .addParameter("id", this.id)
+        .executeUpdate();
+    }
+  }
+
   @Override
   public boolean equals(Object otherComicPanel) {
     if(!(otherComicPanel instanceof ComicPanel)) {
@@ -64,6 +84,15 @@ public class ComicPanel {
       String sql = "SELECT * FROM panels;";
       return con.createQuery(sql)
         .executeAndFetch(ComicPanel.class);
+    }
+  }
+
+  public static ComicPanel find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM panels WHERE id = :id;";
+      return con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(ComicPanel.class);
     }
   }
 }
