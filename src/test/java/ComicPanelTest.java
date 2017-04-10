@@ -46,6 +46,7 @@ public class ComicPanelTest {
     Page testPage = new Page(testBook.getId(), "layout1");
     testPage.save();
     ComicPanel testComicPanel = new ComicPanel(testPage.getId(), 2);
+
     testComicPanel.setImagePath("/img/bozo.jpg");
     testComicPanel.save();
     ComicPanel savedComicPanel = ComicPanel.all().get(0);
