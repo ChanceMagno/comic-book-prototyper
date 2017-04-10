@@ -19,4 +19,8 @@ public class Book {
     return name;
   }
 
+  public int getId() {
+    return id;
+  }
+
 }//end of file

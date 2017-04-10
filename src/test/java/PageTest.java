@@ -45,6 +45,15 @@ public class PageTest {
     assertEquals(page1, Page.all().get(1));
   }
 
+  @Test
+  public void find_returnsClassByID_true () {
+    Book myBook = new Book("comic one");
+    myBook.save();
+    Page page = new Page(myBook.getId(), "layout1");
+    page.save();
+    assertEquals(page, Page.find(page.getId()));
+  }
+
 
 
 }
