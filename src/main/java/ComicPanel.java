@@ -11,9 +11,6 @@ public class ComicPanel {
   private int id;
   private int page_id;
   private int sequence;
-  private String dialog1;
-  private String dialog2;
-  private String narration;
   private String image_path;
 
   public ComicPanel(int page_id, int sequence) {
@@ -21,6 +18,9 @@ public class ComicPanel {
     this.sequence = sequence;
   }
 
+  public int getId() {
+    return id;
+  }
   public int getPageId() {
     return page_id;
   }
@@ -31,6 +31,10 @@ public class ComicPanel {
 
   public String getImagePath() {
     return image_path;
+  }
+
+  public void setImagePath(String image_path) {
+    this.image_path = image_path;
   }
 
   public void save() {
@@ -45,10 +49,21 @@ public class ComicPanel {
     }
   }
 
-  public int getId() {
-    return id;
+  @Override
+  public boolean equals(Object otherComicPanel) {
+    if(!(otherComicPanel instanceof ComicPanel)) {
+      return false;
+    } else {
+      ComicPanel newComicPanel = (ComicPanel) otherComicPanel;
+      return this.getPageId() == newComicPanel.getPageId() && this.getSequence() == newComicPanel.getSequence() && this.getImagePath().equals(newComicPanel.getImagePath());
+    }
   }
 
-
-
+  public static List<ComicPanel> all() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM panels;";
+      return con.createQuery(sql)
+        .executeAndFetch(ComicPanel.class);
+    }
+  }
 }

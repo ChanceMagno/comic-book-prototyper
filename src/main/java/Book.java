@@ -12,6 +12,7 @@ public class Book {
   private String title;
   private int user_id;
 
+
   public Book(String title, int user_id) {
     this.title = title;
     this.user_id = user_id;
@@ -39,6 +40,4 @@ public class Book {
         .getKey();
     }
   }
-
-
-}//end of file
+}
