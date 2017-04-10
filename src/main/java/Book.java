@@ -8,11 +8,14 @@ import java.util.TimerTask;
 import java.sql.Timestamp;
 
 public class Book {
-  private String title;
   private int id;
+  private String title;
+  private int user_id;
 
-  public Book(String title) {
+
+  public Book(String title, int user_id) {
     this.title = title;
+    this.user_id = user_id;
   }
 
   public String getTitle() {
@@ -23,14 +26,18 @@ public class Book {
     return id;
   }
 
+  public int getUserId() {
+    return user_id;
+  }
+
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO books(title) VALUES(:title)";
+      String sql = "INSERT INTO books(title, user_id) VALUES(:title, :user_id)";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("title", this.title)
+        .addParameter("user_id", this.user_id)
         .executeUpdate()
         .getKey();
     }
   }
-
-}//end of file
+}
