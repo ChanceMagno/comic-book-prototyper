@@ -87,6 +87,4 @@ public class BookTest {
  public void find_returnsNullWhenNoBookFound_null() {
    assertTrue(Book.find(999) == null);
  }
-
-
- }
+}
