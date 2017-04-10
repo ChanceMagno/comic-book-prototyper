@@ -80,8 +80,12 @@ public class PageTest {
     myBook.save();
     Page page1 = new Page(myBook.getId(), "layout1");
     page1.save();
-    ComicPanel panel = new ComicPanel(page1.getId(), 1);
-    assertEquals(panel, page1.getPanels(page1.getId()).get(0));
+    ComicPanel panel = new ComicPanel(page1.getId(), 3);
+    panel.save();
+    ComicPanel panel1 = new ComicPanel(page1.getId(), 6);
+    panel1.save();
+    assertEquals(panel.getSequence(), page1.getPanels(page1.getId()).get(0).getSequence());
+    assertEquals(panel1.getSequence(), page1.getPanels(page1.getId()).get(1).getSequence());
   }
 
 
