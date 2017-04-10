@@ -41,13 +41,63 @@ public class ComicPanelTest {
 
   @Test
   public void save_assignsIdAndSavesObjectToDatabase_true() {
-    Book testBook = new Book("Jefferson Conflict");
-    Page testPage = new Page()
-    ComicPanel testComicPanel = new ComicPanel(1, 2);
+    Book testBook = new Book("Jefferson Conflict", 1);
+    testBook.save();
+    Page testPage = new Page(testBook.getId(), "layout1");
+    testPage.save();
+    ComicPanel testComicPanel = new ComicPanel(testPage.getId(), 2);
     testComicPanel.setImagePath("/img/bozo.jpg");
     testComicPanel.save();
     ComicPanel savedComicPanel = ComicPanel.all().get(0);
     assertEquals(testComicPanel.getId(), savedComicPanel.getId());
   }
 
+  @Test
+  public void all_returnsAllInstancesOfComicPanel_true() {
+    Book testBook = new Book("Jefferson Conflict", 1);
+    testBook.save();
+    Page testPage = new Page(testBook.getId(), "layout1");
+    testPage.save();
+    ComicPanel firstComicPanel = new ComicPanel(testPage.getId(), 2);
+    firstComicPanel.setImagePath("/img/bozo.jpg");
+    firstComicPanel.save();
+    ComicPanel secondComicPanel = new ComicPanel(testPage.getId(), 2);
+    secondComicPanel.setImagePath("/img/kazoo.jpg");
+    secondComicPanel.save();
+    assertTrue(ComicPanel.all().get(0).equals(firstComicPanel));
+    assertTrue(ComicPanel.all().get(1).equals(secondComicPanel));
+  }
+
+  @Test
+  public void find_returnsAnInstanceOfComicPanel_true() {
+    Book testBook = new Book("Jefferson Conflict", 1);
+    testBook.save();
+    Page testPage = new Page(testBook.getId(), "layout1");
+    testPage.save();
+    ComicPanel testComicPanel = new ComicPanel(testPage.getId(), 2);
+    testComicPanel.setImagePath("/img/bozo.jpg");
+    testComicPanel.save();
+    ComicPanel savedComicPanel = ComicPanel.find(testComicPanel.getId());
+    assertTrue(savedComicPanel.equals(testComicPanel));
+  }
+
+  @Test
+  public void update_updates_true() {
+    Book testBook = new Book("Jefferson Conflict", 1);
+    testBook.save();
+    Page firstPage = new Page(testBook.getId(), "layout1");
+    firstPage.save();
+    Page secondPage = new Page(testBook.getId(), "layout1");
+    secondPage.save();
+    ComicPanel testComicPanel = new ComicPanel(firstPage.getId(), 2);
+    testComicPanel.save();
+    testComicPanel.setPageId(secondPage.getId());
+    testComicPanel.setSequence(1);
+    testComicPanel.setImagePath("/img/bozo.jpg");
+    testComicPanel.update();
+    ComicPanel savedComicPanel = ComicPanel.find(testComicPanel.getId());
+    assertEquals(secondPage.getId(), savedComicPanel.getPageId());
+    assertEquals(1, savedComicPanel.getSequence());
+    assertEquals("/img/bozo.jpg", savedComicPanel.getImagePath());
+  }
 }
