@@ -88,6 +88,14 @@ private String layout;
     }
   }
 
+  public static List<ComicPanel> getPanels(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM panels WHERE page_id =" + id + ";";
+      return con.createQuery(sql)
+      .executeAndFetch(ComicPanel.class);
+    }
+  }
+
 
 
 
