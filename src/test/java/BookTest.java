@@ -16,7 +16,7 @@ public class BookTest {
 
   @Test
   public void BookInstantiatesCorrectly_true() {
-    Book myBook = new Book("Comic One");
+    Book myBook = new Book("Comic One", 1);
     assertEquals(true, myBook instanceof Book);
   }
 
@@ -89,5 +89,6 @@ public class BookTest {
  // public void find_returnsNullWhenNoBookFound_null() {
  //   assertTrue(Book.find(999) == null);
  // }
+
 
  }

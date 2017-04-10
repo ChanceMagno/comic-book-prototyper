@@ -32,4 +32,22 @@ public class ComicPanelTest {
     assertEquals(2, testComicPanel.getSequence());
   }
 
+  @Test
+  public void setGetImagePath_setsAndGetsImagePath_String() {
+    ComicPanel testComicPanel = new ComicPanel(1, 2);
+    testComicPanel.setImagePath("/img/bozo.jpg");
+    assertEquals("/img/bozo.jpg", testComicPanel.getImagePath());
+  }
+
+  @Test
+  public void save_assignsIdAndSavesObjectToDatabase_true() {
+    Book testBook = new Book("Jefferson Conflict");
+    Page testPage = new Page()
+    ComicPanel testComicPanel = new ComicPanel(1, 2);
+    testComicPanel.setImagePath("/img/bozo.jpg");
+    testComicPanel.save();
+    ComicPanel savedComicPanel = ComicPanel.all().get(0);
+    assertEquals(testComicPanel.getId(), savedComicPanel.getId());
+  }
+
 }
