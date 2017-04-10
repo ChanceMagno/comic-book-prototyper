@@ -54,6 +54,26 @@ public class PageTest {
     assertEquals(page, Page.find(page.getId()));
   }
 
+  @Test
+  public void updatePageLayout_returnsUpdatedLayout_true() {
+    Book myBook = new Book("comic one", 1);
+    myBook.save();
+    Page page1 = new Page(myBook.getId(), "layout1");
+    page1.save();
+    page1.updatePageLayout("layout3", page1.getId());
+    assertEquals("layout3", Page.find(page1.getId()).getLayout());
+  }
+
+  @Test
+  public void delete_deletesPage_true() {
+    Book myBook = new Book("comic one", 1);
+    myBook.save();
+    Page page1 = new Page(myBook.getId(), "layout1");
+    page1.save();
+    page1.delete();
+    assertEquals(null, Page.find(page1.getId()));
+  }
+
 
 
 }

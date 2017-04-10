@@ -59,7 +59,6 @@ private String layout;
     }
 }
 
-  
   public static Page find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM pages WHERE id = :id;";
@@ -69,5 +68,28 @@ private String layout;
       return page;
     }
   }
+
+  public void updatePageLayout(String newLayout, int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE pages SET layout = :layout WHERE id = :id;";
+      con.createQuery(sql)
+      .addParameter("layout", newLayout)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
+
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM pages WHERE id = :id;";
+      con.createQuery(sql)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
+
+
+
+
 
 }
