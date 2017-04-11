@@ -22,6 +22,13 @@ h4 {
   text-align: center;
 }
 
+/*page-layout-form*/
+
+#layoutExample1 {
+  height: 200px;
+  width: 200px;
+}
+
 /*layout1*/
 
 .layout1 {
