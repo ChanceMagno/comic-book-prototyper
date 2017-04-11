@@ -53,6 +53,7 @@ private String layout;
     }
 }
 
+
   public static Page find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM pages WHERE id = :id;";
@@ -68,6 +69,17 @@ private String layout;
       String sql = "UPDATE pages SET layout = :layout WHERE id = :id;";
       con.createQuery(sql)
       .addParameter("layout", newLayout)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
+
+  public void update(int book_id, String layout) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE pages SET book_id = :book_id, layout = :layout WHERE id = :id;";
+      con.createQuery(sql)
+      .addParameter("book_id", book_id)
+      .addParameter("layout", layout)
       .addParameter("id", id)
       .executeUpdate();
     }
