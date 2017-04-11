@@ -63,6 +63,32 @@ public class ComicPanel {
     }
   }
 
+  public List<Text> getTexts() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM texts WHERE panel_id = :panel_id;";
+      return con.createQuery(sql)
+        .addParameter("panel_id", this.id)
+        .executeAndFetch(Text.class);
+    }
+  }
+
+  public void deleteTexts() {
+    List<Text> texts = getTexts();
+    for (Text text : texts) {
+      text.delete();
+    }
+  }
+
+  public void delete() {
+    deleteTexts();
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM panels WHERE id = :id;";
+      con.createQuery(sql)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
+  }
+
   @Override
   public boolean equals(Object otherComicPanel) {
     if(!(otherComicPanel instanceof ComicPanel)) {

@@ -77,6 +77,58 @@ public class ComicPanelTest {
   }
 
   @Test
+  public void getTexts_returnsTexts_true() {
+    Book testBook = new Book("Jefferson Conflict", 1);
+    testBook.save();
+    Page testPage = new Page(testBook.getId(), "layout1");
+    testPage.save();
+    ComicPanel testComicPanel = new ComicPanel(testPage.getId(), 2);
+    testComicPanel.setImagePath("/img/bozo.jpg");
+    testComicPanel.save();
+    Text firstText = new Text(testComicPanel.getId(), 1, "speech", "comic sans");
+    firstText.save();
+    Text secondText = new Text(testComicPanel.getId(), 2, "thought", "console");
+    secondText.save();
+    assertTrue(testComicPanel.getTexts().get(0).equals(firstText));
+    assertTrue(testComicPanel.getTexts().get(1).equals(secondText));
+  }
+
+  @Test
+  public void deleteTexts_deletesTexts_true() {
+    Book testBook = new Book("Jefferson Conflict", 1);
+    testBook.save();
+    Page testPage = new Page(testBook.getId(), "layout1");
+    testPage.save();
+    ComicPanel testComicPanel = new ComicPanel(testPage.getId(), 2);
+    testComicPanel.setImagePath("/img/bozo.jpg");
+    testComicPanel.save();
+    Text firstText = new Text(testComicPanel.getId(), 1, "speech", "comic sans");
+    firstText.save();
+    Text secondText = new Text(testComicPanel.getId(), 2, "thought", "console");
+    secondText.save();
+    testComicPanel.deleteTexts();
+    assertEquals(0, testComicPanel.getTexts().size());
+  }
+
+  @Test
+  public void delete_deletesPanelAndTexts_true() {
+    Book testBook = new Book("Jefferson Conflict", 1);
+    testBook.save();
+    Page testPage = new Page(testBook.getId(), "layout1");
+    testPage.save();
+    ComicPanel testComicPanel = new ComicPanel(testPage.getId(), 2);
+    testComicPanel.setImagePath("/img/bozo.jpg");
+    testComicPanel.save();
+    Text firstText = new Text(testComicPanel.getId(), 1, "speech", "comic sans");
+    firstText.save();
+    Text secondText = new Text(testComicPanel.getId(), 2, "thought", "console");
+    secondText.save();
+    testComicPanel.delete();
+    assertEquals(0, Text.all().size());
+    assertEquals(0, ComicPanel.all().size());
+  }
+
+  @Test
   public void update_updates_true() {
     Book testBook = new Book("Jefferson Conflict", 1);
     testBook.save();
@@ -95,4 +147,6 @@ public class ComicPanelTest {
     assertEquals(1, savedComicPanel.getSequence());
     assertEquals("/img/bozo.jpg", savedComicPanel.getImagePath());
   }
+
+
 }
