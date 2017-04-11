@@ -31,7 +31,7 @@ h4 {
 
 /*layout1*/
 
-.layout1 {
+.layout {
   margin-top: 150px;
 
 }
@@ -42,7 +42,8 @@ h4 {
     align-items: center;
     overflow: hidden
 }
-.fill img {
+
+.two-panels img {
     flex-shrink: 0;
     height: 250px;
     width: 250px;
@@ -50,69 +51,27 @@ h4 {
     min-height: 100%*/
 }
 
-#layout1-panel1 {
+.one-panel img {
+    flex-shrink: 0;
+    height: 250px;
+    width: 506px;
+    /*min-width: 100%;
+    min-height: 100%*/
+}
+
+.one-panel {
   margin-left: 3px;
   margin-bottom: 3px;
   margin-top: 3px;
   margin-right: 3px;
   height: 250px;
-  width: 250px;
+  width: 506px;
   border-style: solid;
   border-width: 3px black;
   outline: 6px solid white;
 }
 
-
-
-#layout1-panel2 {
-  margin-left: 3px;
-  margin-bottom: 3px;
-  margin-top: 3px;
-  margin-right: 3px;
-  height: 250px;
-  width: 250px;
-  border-style: solid;
-  border-width: 3px black;
-  outline: 6px solid white;
-}
-
-#layout1-panel3 {
-  margin-left: 3px;
-  margin-bottom: 3px;
-  margin-top: 3px;
-  margin-right: 3px;
-  height: 250px;
-  width: 250px;
-  border-style: solid;
-  border-width: 3px black;
-  outline: 6px solid white;
-}
-
-#layout1-panel4 {
-  margin-left: 3px;
-  margin-bottom: 3px;
-  margin-top: 3px;
-  margin-right: 3px;
-  height: 250px;
-  width: 250px;
-  border-style: solid;
-  border-width: 3px black;
-  outline: 6px solid white;
-}
-
-#layout1-panel5 {
-  margin-left: 3px;
-  margin-bottom: 3px;
-  margin-top: 3px;
-  margin-right: 3px;
-  height: 250px;
-  width: 250px;
-  border-style: solid;
-  border-width: 3px black;
-  outline: 6px solid white;
-}
-
-#layout1-panel6 {
+.two-panels {
   margin-left: 3px;
   margin-bottom: 3px;
   margin-top: 3px;
