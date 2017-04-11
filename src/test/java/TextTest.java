@@ -38,20 +38,20 @@ public class TextTest {
     assertTrue(testText.getFont().equals("comic sans"));
   }
 
-  @Test
-  public void save_assignsIdAndSavesObjectToDatabase_true() {
-    Book testBook = new Book("Jefferson Conflict", 1);
-    testBook.save();
-    Page testPage = new Page(testBook.getId(), "layout1");
-    testPage.save();
-    ComicPanel testComicPanel = new ComicPanel(testPage.getId(), 2);
-    testComicPanel.setImagePath("/img/bozo.jpg");
-    testComicPanel.save();
-    Text testText = new Text(testComicPanel.getId(), 1, "speech", "comic sans");
-    testText.save();
-    Text savedText = Text.all().get(0);
-    assertEquals(testText.getId(), savedText.getId());
-  }
+  // @Test
+  // public void save_assignsIdAndSavesObjectToDatabase_true() {
+  //   Book testBook = new Book("Jefferson Conflict", 1);
+  //   testBook.save();
+  //   Page testPage = new Page(testBook.getId(), "layout1");
+  //   testPage.save();
+  //   ComicPanel testComicPanel = new ComicPanel(testPage.getId(), 2);
+  //   testComicPanel.setImagePath("/img/bozo.jpg");
+  //   testComicPanel.save();
+  //   Text testText = new Text(testComicPanel.getId(), 1, "speech", "comic sans");
+  //   testText.save();
+  //   Text savedText = Text.all().get(0);
+  //   assertEquals(testText.getId(), savedText.getId());
+  // }
 
   @Test
   public void all_returnsAllInstancesOfText_true() {
