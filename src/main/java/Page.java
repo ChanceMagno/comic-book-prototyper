@@ -1,11 +1,5 @@
 import org.sql2o.*;
-import java.util.Arrays;
 import java.util.List;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.sql.Timestamp;
 
 public class Page {
 private int id;
@@ -59,7 +53,6 @@ private String layout;
     }
 }
 
-  
   public static Page find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM pages WHERE id = :id;";
@@ -69,5 +62,47 @@ private String layout;
       return page;
     }
   }
+
+  public void updatePageLayout(String newLayout, int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE pages SET layout = :layout WHERE id = :id;";
+      con.createQuery(sql)
+      .addParameter("layout", newLayout)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
+
+  public void update(int book_id, String layout) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE pages SET book_id = :book_id, layout = :layout WHERE id = :id;";
+      con.createQuery(sql)
+      .addParameter("book_id", book_id)
+      .addParameter("layout", layout)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
+
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM pages WHERE id = :id;";
+      con.createQuery(sql)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
+
+  public static List<ComicPanel> getPanels(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM panels WHERE page_id =" + id + ";";
+      return con.createQuery(sql)
+      .executeAndFetch(ComicPanel.class);
+    }
+  }
+
+
+
+
 
 }
