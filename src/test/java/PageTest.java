@@ -59,13 +59,19 @@ public class PageTest {
   }
 
   @Test
-  public void delete_deletesPage_true() {
+  public void delete_deletesPageAndPanels_true() {
     Book myBook = new Book("comic one", 1);
     myBook.save();
     Page page1 = new Page(myBook.getId(), "layout1");
     page1.save();
+    ComicPanel panel = new ComicPanel(page1.getId(), 3);
+    panel.save();
+    ComicPanel panel1 = new ComicPanel(page1.getId(), 6);
+    panel1.save();
     page1.delete();
     assertEquals(null, Page.find(page1.getId()));
+    assertEquals(0, ComicPanel.all().size());
+
   }
 
   @Test
@@ -78,10 +84,23 @@ public class PageTest {
     panel.save();
     ComicPanel panel1 = new ComicPanel(page1.getId(), 6);
     panel1.save();
-    assertEquals(panel.getSequence(), page1.getPanels(page1.getId()).get(0).getSequence());
-    assertEquals(panel1.getSequence(), page1.getPanels(page1.getId()).get(1).getSequence());
+    assertEquals(panel.getSequence(), page1.getPanels().get(0).getSequence());
+    assertEquals(panel1.getSequence(), page1.getPanels().get(1).getSequence());
   }
 
+  @Test
+  public void deletePanels_deletesAllPanelsInPage_true() {
+    Book myBook = new Book("comic one", 1);
+    myBook.save();
+    Page page1 = new Page(myBook.getId(), "layout1");
+    page1.save();
+    ComicPanel panel = new ComicPanel(page1.getId(), 3);
+    panel.save();
+    ComicPanel panel1 = new ComicPanel(page1.getId(), 6);
+    panel1.save();
+    page1.deletePanels();
+    assertEquals(0, page1.getPanels().size());
+  }
 
 
 }
