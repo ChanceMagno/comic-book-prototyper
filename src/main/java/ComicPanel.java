@@ -63,8 +63,6 @@ public class ComicPanel {
     }
   }
 
-
-
   @Override
   public boolean equals(Object otherComicPanel) {
     if(!(otherComicPanel instanceof ComicPanel)) {
