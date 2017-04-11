@@ -2,7 +2,7 @@ body {
   background-color: #8f8e8d;
 }
 
-.header-img {
+.header-image {
   width: 100%;
 }
 
@@ -20,6 +20,13 @@ h3 {
 
 h4 {
   text-align: center;
+}
+
+/*page-layout-form*/
+
+#layoutExample1 {
+  height: 200px;
+  width: 200px;
 }
 
 /*layout1*/
