@@ -86,6 +86,7 @@ private String layout;
   }
 
   public void delete() {
+    deletePanels();
     try(Connection con = DB.sql2o.open()) {
       String sql = "DELETE FROM pages WHERE id = :id;";
       con.createQuery(sql)
@@ -94,16 +95,19 @@ private String layout;
     }
   }
 
-  public static List<ComicPanel> getPanels(int id) {
-    try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM panels WHERE page_id =" + id + ";";
-      return con.createQuery(sql)
-      .executeAndFetch(ComicPanel.class);
+  public void deletePanels() {
+    List<ComicPanel> panels = getPanels();
+    for (ComicPanel panel : panels) {
+      panel.delete();
     }
   }
 
-
-
-
-
+  public List<ComicPanel> getPanels() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM panels WHERE page_id = :page_id;";
+      return con.createQuery(sql)
+        .addParameter("page_id", this.id)
+        .executeAndFetch(ComicPanel.class);
+    }
+  }
 }
