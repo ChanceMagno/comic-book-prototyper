@@ -54,12 +54,19 @@ public class Book {
 
    public List<Page> getPages() {
    try(Connection con = DB.sql2o.open()) {
-     String sql = "SELECT * FROM pages where bookId=:id";
+     String sql = "SELECT * FROM pages where book_id = :book_id";
      return con.createQuery(sql)
-       .addParameter("id", this.id)
+       .addParameter("book_id", this.id)
        .executeAndFetch(Page.class);
    }
  }
+
+  public void deletePages() {
+    List<Page> pages = getPages();
+    for (Page page : pages) {
+      page.delete();
+    }
+  }
 
   @Override
    public boolean equals(Object otherBook) {
@@ -83,11 +90,12 @@ public class Book {
   }
 
   public void delete() {
-   try(Connection con = DB.sql2o.open()) {
-     String sql = "DELETE FROM books WHERE id = :id;";
-     con.createQuery(sql)
-       .addParameter("id", id)
-       .executeUpdate();
-     }
-   }
+    deletePages();
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM books WHERE id = :id;";
+      con.createQuery(sql)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
+  }
 }
