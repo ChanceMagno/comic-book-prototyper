@@ -73,6 +73,17 @@ private String layout;
     }
   }
 
+  public void update(int book_id, String layout) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE pages SET book_id = :book_id, layout = :layout WHERE id = :id;";
+      con.createQuery(sql)
+      .addParameter("book_id", book_id)
+      .addParameter("layout", layout)
+      .addParameter("id", id)
+      .executeUpdate();
+    }
+  }
+
   public void delete() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "DELETE FROM pages WHERE id = :id;";
