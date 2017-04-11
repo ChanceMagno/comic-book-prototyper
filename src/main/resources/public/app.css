@@ -21,3 +21,98 @@ h3 {
 h4 {
   text-align: center;
 }
+
+/*layout1*/
+
+.layout1 {
+  margin-top: 150px;
+
+}
+
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+.fill img {
+    flex-shrink: 0;
+    height: 250px;
+    width: 250px;
+    /*min-width: 100%;
+    min-height: 100%*/
+}
+
+#layout1-panel1 {
+  margin-left: 3px;
+  margin-bottom: 3px;
+  margin-top: 3px;
+  margin-right: 3px;
+  height: 250px;
+  width: 250px;
+  border-style: solid;
+  border-width: 3px black;
+  outline: 6px solid white;
+}
+
+
+
+#layout1-panel2 {
+  margin-left: 3px;
+  margin-bottom: 3px;
+  margin-top: 3px;
+  margin-right: 3px;
+  height: 250px;
+  width: 250px;
+  border-style: solid;
+  border-width: 3px black;
+  outline: 6px solid white;
+}
+
+#layout1-panel3 {
+  margin-left: 3px;
+  margin-bottom: 3px;
+  margin-top: 3px;
+  margin-right: 3px;
+  height: 250px;
+  width: 250px;
+  border-style: solid;
+  border-width: 3px black;
+  outline: 6px solid white;
+}
+
+#layout1-panel4 {
+  margin-left: 3px;
+  margin-bottom: 3px;
+  margin-top: 3px;
+  margin-right: 3px;
+  height: 250px;
+  width: 250px;
+  border-style: solid;
+  border-width: 3px black;
+  outline: 6px solid white;
+}
+
+#layout1-panel5 {
+  margin-left: 3px;
+  margin-bottom: 3px;
+  margin-top: 3px;
+  margin-right: 3px;
+  height: 250px;
+  width: 250px;
+  border-style: solid;
+  border-width: 3px black;
+  outline: 6px solid white;
+}
+
+#layout1-panel6 {
+  margin-left: 3px;
+  margin-bottom: 3px;
+  margin-top: 3px;
+  margin-right: 3px;
+  height: 250px;
+  width: 250px;
+  border-style: solid;
+  border-width: 3px black;
+  outline: 6px solid white;
+}

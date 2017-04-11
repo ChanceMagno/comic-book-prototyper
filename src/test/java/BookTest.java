@@ -69,13 +69,45 @@ public class BookTest {
    assertEquals("Comic Three", Book.find(testBook.getId()).getTitle());
  }
 
- @Test
- public void delete_deletesBookFromDatabase_0() {
-   Book testBook = new Book("Comic One", 1);
-   testBook.save();
-   testBook.delete();
-   assertEquals(0, Book.all().size());
- }
+  @Test
+  public void delete_deletesBookFromDatabase_0() {
+    Book testBook = new Book("Comic One", 1);
+    testBook.save();
+    testBook.delete();
+    assertEquals(0, Book.all().size());
+  }
+
+  @Test
+  public void getPages_returnsAllPages_true() {
+    Book myBook = new Book("Comic One", 1);
+    myBook.save();
+    Page page = new Page(myBook.getId(), "layout1");
+    page.save();
+    Page page1 = new Page(myBook.getId(), "layout2");
+    page1.save();
+    assertEquals(page, myBook.getPages().get(0));
+    assertEquals(page1, myBook.getPages().get(1));
+  }
+
+  @Test
+  public void delete_deletesBooksPagesPanelsAndTexts_true() {
+    Book testBook = new Book("Jefferson Conflict", 1);
+    testBook.save();
+    Page testPage = new Page(testBook.getId(), "layout1");
+    testPage.save();
+    ComicPanel testComicPanel = new ComicPanel(testPage.getId(), 2);
+    testComicPanel.setImagePath("/img/bozo.jpg");
+    testComicPanel.save();
+    Text firstText = new Text(testComicPanel.getId(), 1, "speech", "comic sans");
+    firstText.save();
+    Text secondText = new Text(testComicPanel.getId(), 2, "thought", "console");
+    secondText.save();
+    testBook.delete();
+    assertEquals(0, Text.all().size());
+    assertEquals(0, ComicPanel.all().size());
+    assertEquals(0, Page.all().size());
+    assertEquals(0, Book.all().size());
+  }
 
  @Test
  public void find_returnsNullWhenNoBookFound_null() {
