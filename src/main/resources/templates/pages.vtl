@@ -6,25 +6,47 @@
   <div class="jumbotron">
     <h3>To add a page to your book Choose a layout below</h3>
     <hr>
+    <form class="" action="/book/$book.getId()/layout" method="post">
     <div class="row">
       <div class="col-offset-md-2 col-md-6">
-        <form class="" action="/book/$book.getId()/layout" method="post">
-          <select name="layout">
-            <option value="layout1">Two By Three</option>
-            <option value="layout2">Saab</option>
-            <option value="layout3">Opel</option>
-            <option value="layout4">Audi</option>
-          </select>
-          <button type="submit" name="button">Submit</button>
-        </form>
+        <select name="layout">
+        <option value="layout1">2x2x2</option>
       </div>
       <div class="col-md-2">
         <p>layout example:</p>
-        <img id="layoutExample1" src="https://s-media-cache-ak0.pinimg.com/originals/e5/52/7b/e5527b20e0b5941ffab6e7718a894cb2.jpg" alt="Two by Three Comic Grid"/>
+        <img id="layoutExample" src="https://s-media-cache-ak0.pinimg.com/originals/e5/52/7b/e5527b20e0b5941ffab6e7718a894cb2.jpg" alt="2x2x2 Comic Grid"/>
       </div>
-
-
     </div>
+      <div class="row">
+        <div class="col-offset-md-2 col-md-6">
+          <option value="layout2">2x1x2</option>
+        </div>
+        <div class="col-md-2">
+          <p>layout example:</p>
+          <img id="layoutExample" src="https://s-media-cache-ak0.pinimg.com/originals/e5/52/7b/e5527b20e0b5941ffab6e7718a894cb2.jpg" alt="2x1x2 Comic Grid"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-offset-md-2 col-md-6">
+          <option value="layout3">1x2x1</option>
+        </div>
+        <div class="col-md-2">
+          <p>layout example:</p>
+          <img id="layoutExample" src="https://s-media-cache-ak0.pinimg.com/originals/e5/52/7b/e5527b20e0b5941ffab6e7718a894cb2.jpg" alt="1x2x1 Comic Grid"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-offset-md-2 col-md-6">
+          <option value="layout4">1x2x1</option>
+        </div>
+        <div class="col-md-2">
+          <p>layout example:</p>
+          <img id="layoutExample" src="https://s-media-cache-ak0.pinimg.com/originals/e5/52/7b/e5527b20e0b5941ffab6e7718a894cb2.jpg" alt="1x2x1 Comic Grid"/>
+        </div>
+      </div>
+        </select>
+      <button type="submit" name="button">Submit</button>
+      </form>
 <!-- Footer -->
     <hr>
     <p class="footer">© 2017 Epicodus. 5th Week Project</p>
