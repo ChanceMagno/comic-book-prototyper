@@ -1,18 +1,25 @@
 <div class="container">
-    <img src="/img/comic-book-banner-2.jpg" class="header-image">
+    <img src="/img/comic-book-banner-2.jpg" class="header-img">
 </div>
-<form class="" action="index.html" method="post">
-  <label for="">Enter User's Name</label>
-  <input type="textbox" name="" value="" placeholder="ex: Billy Bob">
-</form>
 <div class="container">
-  <div class="form-group">
-
+  <div class="jumbotron">
+    <h1 class="header">Comic Book Prototyper</h1>
+    <hr>
+    <h3>Create a New Comic Book</h3>
+    <h4>What would you like to call it?</h4>
+    <hr>
+    <form action="/pages/new" method="post">
+      <label for="">Comic Book Name</label>
+      <br>
+      <input type="textbox" name="" value="" .required="Please Enter a Valid Name">
+      <br>
+      <hr>
+      <button type="submit" id="home-create-button" class="btn btn-success">Create New Comic Book!</button>
+    </form>
+<!-- Footer -->
+    <div class="container">
+      <p class="footer">© 2017 Epicodus. 5th Week Project</p>
+    </div>
   </div>
 </div>
-
-<!-- Footer -->
-
-  <div class="container">
-    <p class="footer">© 2017 Epicodus. 5th Week Project</p>
-  </div>
+<!-- End Page -->
