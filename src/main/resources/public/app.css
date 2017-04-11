@@ -9,7 +9,7 @@ nav {
 
 img {
   image-resolution: relative;
-  align-items: left;
+  float: left;
 }
 
 .footer {
@@ -20,6 +20,18 @@ img {
   padding-left: 2px;
   position: absolute;
   right: 10px;
+}
+
+.header {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}
+
+.home-create-button  {
+  align-items: center;
 }
 
 h4 {

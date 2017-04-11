@@ -1,8 +1,8 @@
-# _comic-book-prototyper_
+# _Comic Book Prototyper_
 
 #### _comic-book-prototyper, 04-10-2017_
 
-#### By _**Nathaniel Meyer and Blake Womack**_
+#### By _**Nathaniel Meyer, Blake Womack, Chance Magno, Taylor Loftis-Kim**_
 
 ## Description
 _Example text for the description of the project_
@@ -24,6 +24,6 @@ _Example text for the description of the project_
 
 ### License
 
-Copyright (c) 2017 **_Nathaniel Meyer and Blake Womack_**
+Copyright (c) 2017 **_Nathaniel Meyer, Blake Womack, Chance Magno, and Taylor Loftis-Kim_**
 
 This software is licensed under the MIT license.
