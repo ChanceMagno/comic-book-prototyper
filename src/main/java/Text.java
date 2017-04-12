@@ -124,9 +124,14 @@ public class Text {
 
   public void delete() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "DELETE FROM texts WHERE id = :id;";
-      con.createQuery(sql)
-        .addParameter("id", id)
+      String reSequence = "UPDATE texts SET sequence = sequence - 1 WHERE panel_id = :panel_id AND sequence > :sequence;";
+      con.createQuery(reSequence)
+        .addParameter("panel_id", this.panel_id)
+        .addParameter("sequence", this.sequence)
+        .executeUpdate();
+      String delete = "DELETE FROM texts WHERE id = :id;";
+      con.createQuery(delete)
+        .addParameter("id", this.id)
         .executeUpdate();
     }
   }

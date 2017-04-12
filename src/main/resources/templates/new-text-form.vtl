@@ -1,6 +1,8 @@
 <h3>Add new text to this panel</h3>
 
-<form action="/books/$page.getBookId()/pages/$panel.getPageId()/panels/$panel.getId()/texts/new" method="post">
+<form action="/texts" method="post">
+  <input id="page_id" name="page_id" type="hidden" value="$page.getId()">
+  <input id="panel_id" name="panel_id" type="hidden" value="$panel.getId()">
   <div class="form-group">
     <label for="body">Body</label>
     <input id="body" name="body" type="text" class="form-control" required>
