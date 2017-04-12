@@ -67,6 +67,14 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/books/:book_id/pages/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Book book = Book.find(Integer.parseInt(request.params(":book_id")));
+      model.put("book", book);
+      model.put("template", "templates/pages.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
     get("/books/:book_id/pages/:page_id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       Book book = Book.find(Integer.parseInt(request.params(":book_id")));
@@ -76,14 +84,6 @@ public class App {
       model.put("panel", page.getPanels());
       String layoutSelected = page.getLayout();
       model.put("template", "templates/page-" + layoutSelected + ".vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
-    get("/books/:book_id/pages/new", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      Book book = Book.find(Integer.parseInt(request.params(":book_id")));
-      model.put("book", book);
-      model.put("template", "templates/pages.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
