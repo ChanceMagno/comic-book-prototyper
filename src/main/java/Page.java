@@ -102,7 +102,7 @@ private String layout;
 
   public List<ComicPanel> getPanels() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM panels WHERE page_id = :page_id;";
+      String sql = "SELECT * FROM panels WHERE page_id = :page_id ORDER BY sequence;";
       return con.createQuery(sql)
         .addParameter("page_id", this.id)
         .executeAndFetch(ComicPanel.class);

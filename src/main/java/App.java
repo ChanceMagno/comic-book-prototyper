@@ -60,11 +60,11 @@ public class App {
       model.put("page", page);
       model.put("book", book);
       model.put("panel", page.getPanels());
-      response.redirect("/book/" + book.getId() + "/page/" + page.getId());
+      response.redirect("/books/" + book.getId() + "/pages/" + page.getId());
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/book/:book_id/page/:page_id", (request, response) -> {
+    get("/books/:book_id/pages/:page_id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       Book book = Book.find(Integer.parseInt(request.params(":book_id")));
       Page page = Page.find(Integer.parseInt(request.params(":page_id")));
