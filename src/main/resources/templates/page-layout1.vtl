@@ -1,0 +1,59 @@
+<!-- panel-select.vtl -->
+
+<div class="class layout">
+  <div class="row" id="layout1-row1">
+    <!-- comic panel 1 -->
+    <a href="/books/$book.getId()/pages/$page.getId()/panels/$panel.get(0).getId()">
+    <div class="col-md-4 fill two-panels" id="layout1-panel1">
+      #if ($panel.get(0).getImagePath())
+        <img src="$panel.get(0).getImagePath()" alt="Current image">
+      #end
+    </div>
+    </a>
+    <!-- comic panel 2 -->
+    <a href="/books/$book.getId()/pages/$page.getId()/panels/$panel.get(1).getId()">
+    <div class="col-md-4 fill two-panels" id="layout1-panel2">
+      #if ($panel.get(1).getImagePath())
+        <img src="$panel.get(1).getImagePath()" alt="Current image">
+      #end
+    </div>
+    </a>
+  </div>
+  <!-- comic panel 3 -->
+  <div class="row" id="layout1-row2">
+    <a href="/books/$book.getId()/pages/$page.getId()/panels/$panel.get(2).getId()">
+    <div class="col-md-4 fill two-panels" id="layout1-panel3">
+      #if ($panel.get(2).getImagePath())
+        <img src="$panel.get(2).getImagePath()" alt="Current image">
+      #end
+    </div>
+    </a>
+    <!-- comic panel 4 -->
+    <a href="/books/$book.getId()/pages/$page.getId()/panels/$panel.get(3).getId()">
+    <div class="col-md-4 fill two-panels" id="layout1-panel4">
+      #if ($panel.get(3).getImagePath())
+        <img src="$panel.get(3).getImagePath()" alt="Current image">
+      #end
+    </div>
+    </a>
+  </div>
+  <div class="row" id="layout1-row3">
+    <!-- comic panel 5 -->
+    <a href="/books/$book.getId()/pages/$page.getId()/panels/$panel.get(4).getId()">
+    <div class="col-md-4 fill two-panels" id="layout1-panel5">
+      #if ($panel.get(4).getImagePath())
+        <img src="$panel.get(4).getImagePath()" alt="Current image">
+      #end
+    </div>
+    </a>
+    <!-- comic panel 6 -->
+    <a href="/books/$book.getId()/pages/$page.getId()/panels/$panel.get(5).getId()">
+    <div class="col-md-4 fill two-panels" id="layout1-panel6">
+      #if ($panel.get(5).getImagePath())
+        <img src="$panel.get(5).getImagePath()" alt="Current image">
+      #end
+    </div>
+    </a>
+  </div>
+</div>
+<!-- panel-select.vtl -->
