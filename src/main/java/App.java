@@ -33,17 +33,17 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/books/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/book-form.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
     get("/books/:book_id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       Book book = Book.find(Integer.parseInt(request.params(":book_id")));
       model.put("book", book);
       model.put("template", "templates/book.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
-    get("/books/new", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/book-form.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
@@ -65,7 +65,7 @@ public class App {
       model.put("pages", pages);
       model.put("template", "templates/page-list.vtl");
       return new ModelAndView(model, layout);
-    })
+    }, new VelocityTemplateEngine());
 
     get("/books/:book_id/pages/:page_id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
@@ -111,24 +111,6 @@ public class App {
       model.put("book", book);
       model.put("panel", page.getPanels());
       response.redirect("/books/" + book.getId() + "/pages/" + page.getId());
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
-    get("/layout1", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/Page-layout-1.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
-    get("/layout2", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/page-layout-2.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
-    get("/layout3", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/page-layout-3.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
