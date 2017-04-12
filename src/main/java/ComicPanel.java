@@ -65,7 +65,7 @@ public class ComicPanel {
 
   public List<Text> getTexts() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM texts WHERE panel_id = :panel_id;";
+      String sql = "SELECT * FROM texts WHERE panel_id = :panel_id ORDER by sequence;";
       return con.createQuery(sql)
         .addParameter("panel_id", this.id)
         .executeAndFetch(Text.class);
