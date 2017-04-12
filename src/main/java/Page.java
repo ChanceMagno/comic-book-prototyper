@@ -11,7 +11,7 @@ private String layout;
     this.layout = layout;
   }
 
-  public int getbookId() {
+  public int getBookId() {
     return book_id;
   }
 
@@ -48,7 +48,7 @@ private String layout;
     } else {
       Page newPage = (Page) otherPage;
       return
-      this.getbookId() == newPage.getbookId() && this.getLayout().equals(newPage.getLayout());
+      this.getBookId() == newPage.getBookId() && this.getLayout().equals(newPage.getLayout());
     }
 }
 

@@ -5,14 +5,16 @@ public class Text {
   private int id;
   private int panel_id;
   private int sequence;
+  private String body;
   private String box_style;
   private String font;
   private String orientation;
   private String speaker;
 
-  public Text(int panel_id, int sequence, String box_style, String font) {
+  public Text(int panel_id, int sequence, String body, String box_style, String font) {
     this.panel_id = panel_id;
     this.sequence = sequence;
+    this.body = body;
     this.box_style = box_style;
     this.font = font;
   }
@@ -37,6 +39,14 @@ public class Text {
     this.sequence = sequence;
   }
 
+  public String getBody(){
+    return body;
+  }
+
+  public void setBody(String body){
+    this.body = body;
+  }
+
   public String getBoxStyle() {
     return box_style;
   }
@@ -55,10 +65,11 @@ public class Text {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO texts (panel_id, sequence, box_style, font) VALUES (:panel_id, :sequence, :box_style, :font);";
+      String sql = "INSERT INTO texts (panel_id, sequence, body, box_style, font) VALUES (:panel_id, :sequence, :body, :box_style, :font);";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("panel_id", this.panel_id)
         .addParameter("sequence", this.sequence)
+        .addParameter("body", this.body)
         .addParameter("box_style", this.box_style)
         .addParameter("font", this.font)
         .executeUpdate()
@@ -91,6 +102,7 @@ public class Text {
       Text newText = (Text) otherText;
       return this.getPanelId() == newText.getPanelId() &&
       this.getSequence() == newText.getSequence() &&
+      this.getBody().equals(newText.getBody()) &&
       this.getBoxStyle().equals(newText.getBoxStyle()) &&
       this.getFont().equals(newText.getFont());
     }
@@ -98,10 +110,11 @@ public class Text {
 
   public void update() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "UPDATE texts SET panel_id = :panel_id, sequence = :sequence, box_style = :box_style, font = :font WHERE id = :id;";
+      String sql = "UPDATE texts SET panel_id = :panel_id, sequence = :sequence, body = :body, box_style = :box_style, font = :font WHERE id = :id;";
       con.createQuery(sql)
         .addParameter("panel_id", this.panel_id)
         .addParameter("sequence", this.sequence)
+        .addParameter("body", this.body)
         .addParameter("box_style", this.box_style)
         .addParameter("font", this.font)
         .addParameter("id", this.id)

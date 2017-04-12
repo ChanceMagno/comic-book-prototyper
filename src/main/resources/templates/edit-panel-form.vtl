@@ -1,7 +1,23 @@
-<h3>Upload form</h3>
-<form action="/pages/$panel.getPageId()/panels/$panel.getId()" enctype="multipart/form-data" method="post">
+<h3>Edit panel</h3>
+
+#if ($texts.size() > 0)
+  <p>This panel's current text:</p>
+  #foreach($text in $texts)
+    <p>Sequence: $text.getSequence()</p>
+    <p>Body: $text.getBody()</p>
+    <p>Balloon style: $text.getBoxStyle()</p>
+    <p>Font: $text.getFont()</p>
+    <a href="/books/$page.getBookId()/pages/$panel.getPageId()/panels/$panel.getId()/texts/$text.getId()/update">Edit this text.</a>
+    <br>
+  #end
+#else
+#end
+  <a href="/books/$page.getBookId()/pages/$panel.getPageId()/panels/$panel.getId()/texts/new">Add new text.</a>
+
+<img src="$panel.getImagePath()" alt="Current image">
+<form action="/books/$page.getBookId()/pages/$panel.getPageId()/panels/$panel.getId()" enctype="multipart/form-data" method="post">
   <input id="panel_id" type="hidden" name="panel_id" value="$panel.getId()">
   <label for="upfile">File to send</label>
   <input type="file" name="uploaded_file" required><br>
-  <input type="submit" value="Upload">
+  <input type="submit" value="Upload a new image for this panel.">
 </form>

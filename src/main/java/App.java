@@ -1,5 +1,6 @@
 import java.io.*;
 import java.nio.file.*;
+import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 import javax.servlet.*;
@@ -14,6 +15,9 @@ public class App {
 
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
+
+    File uploadDir = new File("src/main/resources/public/img/");
+    uploadDir.mkdir();
 
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
@@ -77,18 +81,19 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/pages/:page_id/panels/:panel_id", (request, response) -> {
+    get("/books/:book_id/pages/:page_id/panels/:panel_id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       ComicPanel panel = ComicPanel.find(Integer.parseInt(request.params(":panel_id")));
+      Page page = Page.find(panel.getPageId());
+      List<Text> texts = panel.getTexts();
+      model.put("page", page);
       model.put("panel", panel);
+      model.put("texts", texts);
       model.put("template", "templates/edit-panel-form.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    File uploadDir = new File("src/main/resources/public/img/");
-    uploadDir.mkdir();
-
-    post("/pages/:page_id/panels/:panel_id", "multipart/form-data", (request, response) -> {
+    post("/books/:book_id/pages/:page_id/panels/:panel_id", "multipart/form-data", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       Page page = Page.find(Integer.parseInt(request.params(":page_id")));
       ComicPanel panel = ComicPanel.find(Integer.parseInt(request.params(":panel_id")));
@@ -99,8 +104,33 @@ public class App {
         panel.setImagePath(tempFile.toString().substring(25));
         panel.update();
       }
+      String url = String.format("/books/%d/pages/%d/panels/%d", page.getBookId(), page.getId(), panel.getId());
+      response.redirect(url);      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/books/:book_id/pages/:page_id/panels/:panel_id/texts/:text_id/update", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Page page = Page.find(Integer.parseInt(request.params(":page_id")));
+      ComicPanel panel = ComicPanel.find(Integer.parseInt(request.params(":panel_id")));
+      Text text = Text.find(Integer.parseInt(request.params(":text_id")));
       model.put("page", page);
-      model.put("template", "templates/edit-page.vtl");
+      model.put("panel", panel);
+      model.put("text", text);
+      model.put("template", "templates/edit-text-form.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/books/:book_id/pages/:page_id/panels/:panel_id/texts/:text_id/update", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Page page = Page.find(Integer.parseInt(request.params(":page_id")));
+      ComicPanel panel = ComicPanel.find(Integer.parseInt(request.params(":panel_id")));
+      Text text = Text.find(Integer.parseInt(request.params(":text_id")));
+      text.setBody(request.queryParams("body"));
+      text.setBoxStyle(request.queryParams("box_style"));
+      text.setFont(request.queryParams("font"));
+      text.update();
+      String url = String.format("/books/%d/pages/%d/panels/%d", page.getBookId(), page.getId(), panel.getId());
+      response.redirect(url);
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
   }
