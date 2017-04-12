@@ -1,12 +1,16 @@
-<!-- pages.vtl -->
+<!-- header -->
 <div class="container">
-    <img src="/img/comic-book-banner-2.jpg" class="header-img">
+  <img src="/img/comic-book-banner-2.jpg" class="header-img">
 </div>
+<!-- header -->
+
+
 <div class="container">
   <div class="jumbotron">
-    <h3>To add a page to your book Choose a layout below</h3>
+    <h2>Comic Book: $book.getTitle()</h2>
     <hr>
-    <form class="" action="/book/$book.getId()/layout" method="post">
+    <h4 class="header">Choose a template to add to a page in your comic.</h4>
+    <form class="" action="/book/$book.getId()/page/created" method="post">
     <div class="row">
       <div class="col-offset-md-2 col-md-6">
         <select name="layout">
@@ -47,14 +51,11 @@
         </select>
       <button type="submit" name="button">Submit</button>
       </form>
-<!-- Footer -->
+
+
+<!-- footer -->
     <hr>
     <p class="footer">© 2017 Epicodus. 5th Week Project</p>
   </div>
 </div>
-
-<!-- pages.vtl -->
-
-
-
-$book.getTitle()
+<!-- footer -->
