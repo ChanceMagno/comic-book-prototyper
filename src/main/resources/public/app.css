@@ -2,24 +2,12 @@ body {
   background-color: #8f8e8d;
 }
 
-nav {
-  position: absolute;
-  left: 10px;
-}
-
-img {
-  image-resolution: relative;
-  float: left;
+.header-image {
+  width: 100%;
 }
 
 .footer {
   text-align: center;
-}
-.btn-group {
-  padding-top: 8px;
-  padding-left: 2px;
-  position: absolute;
-  right: 10px;
 }
 
 .header {
@@ -30,12 +18,67 @@ h3 {
   text-align: center;
 }
 
-.home-create-button  {
-  align-items: center;
+h4 {
+  text-align: center;
 }
 
-h4 {
-  color: #ffffff;
-  padding-top: 5px;
-  left: 10px;
+/*page-layout-form*/
+
+#layoutExample1 {
+  height: 200px;
+  width: 200px;
+}
+
+/*layout1*/
+
+.layout {
+  margin-top: 150px;
+
+}
+
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+
+.two-panels img {
+    flex-shrink: 0;
+    height: 250px;
+    width: 250px;
+    /*min-width: 100%;
+    min-height: 100%*/
+}
+
+.one-panel img {
+    flex-shrink: 0;
+    height: 250px;
+    width: 506px;
+    /*min-width: 100%;
+    min-height: 100%*/
+}
+
+.one-panel {
+  margin-left: 3px;
+  margin-bottom: 3px;
+  margin-top: 3px;
+  margin-right: 3px;
+  height: 250px;
+  width: 506px;
+  border-style: solid;
+  border-width: 3px black;
+  outline: 6px solid white;
+}
+
+.two-panels {
+  margin-left: 3px;
+  margin-bottom: 3px;
+  margin-top: 3px;
+  margin-right: 3px;
+  height: 250px;
+  width: 250px;
+  border-style: solid;
+  border-width: 3px black;
+  outline: 6px solid white;
 }

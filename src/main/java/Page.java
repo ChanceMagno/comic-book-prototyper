@@ -52,7 +52,6 @@ private String layout;
     }
 }
 
-
   public static Page find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM pages WHERE id = :id;";
