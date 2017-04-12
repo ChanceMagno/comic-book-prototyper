@@ -1,0 +1,7 @@
+<h3>Upload form</h3>
+<form action="/pages/$panel.getPageId()/panels/$panel.getId()" enctype="multipart/form-data" method="post">
+  <input id="panel_id" type="hidden" name="panel_id" value="$panel.getId()">
+  <label for="upfile">File to send</label>
+  <input type="file" name="uploaded_file" required><br>
+  <input type="submit" value="Upload">
+</form>
