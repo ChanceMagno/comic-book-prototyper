@@ -21,7 +21,7 @@ public class PageTest {
     Book myBook = new Book("Comic One", 1);
     myBook.save();
     Page page = new Page(myBook.getId(), "layout1");
-    assertEquals(myBook.getId(), page.getbookId());
+    assertEquals(myBook.getId(), page.getBookId());
     assertEquals("layout1", page.getLayout());
   }
 

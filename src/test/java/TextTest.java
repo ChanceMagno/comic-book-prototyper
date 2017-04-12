@@ -10,31 +10,31 @@ public class TextTest {
 
   @Test
   public void text_instantiatesCorrectly_true() {
-    Text testText = new Text(345, 1, "speech", "comic sans");
+    Text testText = new Text(345, 1, "speech", "caption", "comic sans");
     assertTrue(testText instanceof Text);
   }
 
   @Test
   public void getPanelId_returnsPanelId_int() {
-    Text testText = new Text(345, 1, "speech", "comic sans");
+    Text testText = new Text(345, 1, "speech", "caption", "comic sans");
     assertEquals(345, testText.getPanelId());
   }
 
   @Test
   public void getSequence_returnsSequence_int() {
-    Text testText = new Text(345, 1, "speech", "comic sans");
+    Text testText = new Text(345, 1, "speech", "caption", "comic sans");
     assertEquals(1, testText.getSequence());
   }
 
   @Test
   public void getBoxStyle_returnsBoxStyle_String() {
-    Text testText = new Text(345, 1, "speech", "comic sans");
-    assertTrue(testText.getBoxStyle().equals("speech"));
+    Text testText = new Text(345, 1, "speech", "caption", "comic sans");
+    assertTrue(testText.getBoxStyle().equals("caption"));
   }
 
   @Test
   public void getFont_returnsFont_String() {
-    Text testText = new Text(345, 1, "speech", "comic sans");
+    Text testText = new Text(345, 1, "speech", "caption", "comic sans");
     assertTrue(testText.getFont().equals("comic sans"));
   }
 
@@ -62,9 +62,9 @@ public class TextTest {
     ComicPanel testComicPanel = new ComicPanel(testPage.getId(), 2);
     testComicPanel.setImagePath("/img/bozo.jpg");
     testComicPanel.save();
-    Text firstText = new Text(testComicPanel.getId(), 1, "speech", "comic sans");
+    Text firstText = new Text(testComicPanel.getId(), 1, "speech", "caption", "comic sans");
     firstText.save();
-    Text secondText = new Text(testComicPanel.getId(), 2, "thought", "console");
+    Text secondText = new Text(testComicPanel.getId(), 2, "thought", "caption", "console");
     secondText.save();
     assertTrue(Text.all().get(0).equals(firstText));
     assertTrue(Text.all().get(1).equals(secondText));
@@ -79,7 +79,7 @@ public class TextTest {
     ComicPanel testComicPanel = new ComicPanel(testPage.getId(), 2);
     testComicPanel.setImagePath("/img/bozo.jpg");
     testComicPanel.save();
-    Text testText = new Text(testComicPanel.getId(), 1, "speech", "comic sans");
+    Text testText = new Text(testComicPanel.getId(), 1, "speech", "caption", "comic sans");
     testText.save();
     Text savedText = Text.find(testText.getId());
     assertTrue(savedText.equals(testText));
@@ -97,7 +97,7 @@ public class TextTest {
     ComicPanel secondComicPanel = new ComicPanel(testPage.getId(), 2);
     secondComicPanel.setImagePath("/img/kazoo.jpg");
     secondComicPanel.save();
-    Text testText = new Text(firstComicPanel.getId(), 1, "speech", "comic sans");
+    Text testText = new Text(firstComicPanel.getId(), 1, "speech", "caption", "comic sans");
     testText.save();
     testText.setSequence(2);
     testText.setPanelId(secondComicPanel.getId());
@@ -123,11 +123,11 @@ public class TextTest {
     ComicPanel secondComicPanel = new ComicPanel(testPage.getId(), 2);
     secondComicPanel.setImagePath("/img/kazoo.jpg");
     secondComicPanel.save();
-    Text testText = new Text(firstComicPanel.getId(), 1, "speech", "comic sans");
+    Text testText = new Text(firstComicPanel.getId(), 1, "speech", "caption", "comic sans");
     testText.save();
     assertEquals(1, Text.all().size());
     testText.delete();
-    assertEquals(0, Text.all().size());    
+    assertEquals(0, Text.all().size());
   }
 
 }
