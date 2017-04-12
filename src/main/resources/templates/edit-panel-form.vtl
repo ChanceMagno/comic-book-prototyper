@@ -12,12 +12,22 @@
   #end
 #else
 #end
+<br>
   <a href="/books/$page.getBookId()/pages/$panel.getPageId()/panels/$panel.getId()/texts/new">Add new text.</a>
-
+<br>
+#if ($panel.getImagePath())
 <img src="$panel.getImagePath()" alt="Current image">
 <form action="/books/$page.getBookId()/pages/$panel.getPageId()/panels/$panel.getId()" enctype="multipart/form-data" method="post">
   <input id="panel_id" type="hidden" name="panel_id" value="$panel.getId()">
-  <label for="upfile">File to send</label>
+  <label for="upfile">Change this image.</label>
   <input type="file" name="uploaded_file" required><br>
-  <input type="submit" value="Upload a new image for this panel.">
+  <input type="submit" value="Upload">
 </form>
+#else
+<form action="/books/$page.getBookId()/pages/$panel.getPageId()/panels/$panel.getId()" enctype="multipart/form-data" method="post">
+  <input id="panel_id" type="hidden" name="panel_id" value="$panel.getId()">
+  <label for="upfile">Attach an image to this panel.</label>
+  <input type="file" name="uploaded_file" required><br>
+  <input type="submit" value="Upload">
+</form>
+#end

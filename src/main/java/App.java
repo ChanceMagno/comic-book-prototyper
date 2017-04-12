@@ -120,6 +120,16 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/books/:book_id/pages/:page_id/panels/:panel_id/texts/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Page page = Page.find(Integer.parseInt(request.params(":page_id")));
+      ComicPanel panel = ComicPanel.find(Integer.parseInt(request.params(":panel_id")));
+      model.put("page", page);
+      model.put("panel", panel);
+      model.put("template", "templates/new-text-form.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
     post("/books/:book_id/pages/:page_id/panels/:panel_id/texts/:text_id/update", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       Page page = Page.find(Integer.parseInt(request.params(":page_id")));
@@ -133,5 +143,22 @@ public class App {
       response.redirect(url);
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    post("/books/:book_id/pages/:page_id/panels/:panel_id/texts/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Page page = Page.find(Integer.parseInt(request.params(":page_id")));
+      ComicPanel panel = ComicPanel.find(Integer.parseInt(request.params(":panel_id")));
+      int panel_id = panel.getId();
+      int sequence = panel.getTexts().size() + 1;
+      String body = request.queryParams("body");
+      String box_style = request.queryParams("box_style");
+      String font = request.queryParams("font");
+      Text text = new Text(panel_id, sequence, body, box_style, font);
+      text.save();
+      String url = String.format("/books/%d/pages/%d/panels/%d", page.getBookId(), page.getId(), panel.getId());
+      response.redirect(url);
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
   }
 }
