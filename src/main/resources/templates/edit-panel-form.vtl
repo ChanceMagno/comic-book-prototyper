@@ -8,6 +8,9 @@
     <p>Balloon style: $text.getBoxStyle()</p>
     <p>Font: $text.getFont()</p>
     <a href="/books/$page.getBookId()/pages/$panel.getPageId()/panels/$panel.getId()/texts/$text.getId()/update">Edit this text.</a>
+    <form action="/books/$page.getBookId()/pages/$panel.getPageId()/panels/$panel.getId()/texts/$text.getId()/delete" method="post">
+      <button type="submit" class="btn btn-warning">Delete</button>
+    </form>
     <br>
   #end
 #else
