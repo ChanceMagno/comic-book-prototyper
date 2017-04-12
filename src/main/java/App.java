@@ -84,6 +84,7 @@ public class App {
       model.put("panel", page.getPanels());
       String layoutSelected = page.getLayout();
       model.put("template", "templates/page-" + layoutSelected + ".vtl");
+      model.put("navtemplate", "templates/page-navigation.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
