@@ -6,7 +6,6 @@ private int id;
 private int book_id;
 private String layout;
 
-
   public Page(int book_id, String layout) {
     this.book_id = book_id;
     this.layout = layout;
