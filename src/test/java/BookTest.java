@@ -98,9 +98,9 @@ public class BookTest {
     ComicPanel testComicPanel = new ComicPanel(testPage.getId(), 2);
     testComicPanel.setImagePath("/img/bozo.jpg");
     testComicPanel.save();
-    Text firstText = new Text(testComicPanel.getId(), 1, "speech", "comic sans");
+    Text firstText = new Text(testComicPanel.getId(), 1, "speech", "caption", "comic sans");
     firstText.save();
-    Text secondText = new Text(testComicPanel.getId(), 2, "thought", "console");
+    Text secondText = new Text(testComicPanel.getId(), 2, "thought", "caption", "console");
     secondText.save();
     testBook.delete();
     assertEquals(0, Text.all().size());

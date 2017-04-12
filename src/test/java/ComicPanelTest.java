@@ -85,9 +85,9 @@ public class ComicPanelTest {
     ComicPanel testComicPanel = new ComicPanel(testPage.getId(), 2);
     testComicPanel.setImagePath("/img/bozo.jpg");
     testComicPanel.save();
-    Text firstText = new Text(testComicPanel.getId(), 1, "speech", "comic sans");
+    Text firstText = new Text(testComicPanel.getId(), 1, "speech", "caption", "comic sans");
     firstText.save();
-    Text secondText = new Text(testComicPanel.getId(), 2, "thought", "console");
+    Text secondText = new Text(testComicPanel.getId(), 2, "thought", "caption", "console");
     secondText.save();
     assertTrue(testComicPanel.getTexts().get(0).equals(firstText));
     assertTrue(testComicPanel.getTexts().get(1).equals(secondText));
@@ -102,9 +102,9 @@ public class ComicPanelTest {
     ComicPanel testComicPanel = new ComicPanel(testPage.getId(), 2);
     testComicPanel.setImagePath("/img/bozo.jpg");
     testComicPanel.save();
-    Text firstText = new Text(testComicPanel.getId(), 1, "speech", "comic sans");
+    Text firstText = new Text(testComicPanel.getId(), 1, "speech", "caption", "comic sans");
     firstText.save();
-    Text secondText = new Text(testComicPanel.getId(), 2, "thought", "console");
+    Text secondText = new Text(testComicPanel.getId(), 2, "thought", "caption", "console");
     secondText.save();
     testComicPanel.deleteTexts();
     assertEquals(0, testComicPanel.getTexts().size());
@@ -119,9 +119,9 @@ public class ComicPanelTest {
     ComicPanel testComicPanel = new ComicPanel(testPage.getId(), 2);
     testComicPanel.setImagePath("/img/bozo.jpg");
     testComicPanel.save();
-    Text firstText = new Text(testComicPanel.getId(), 1, "speech", "comic sans");
+    Text firstText = new Text(testComicPanel.getId(), 1, "speech", "caption", "comic sans");
     firstText.save();
-    Text secondText = new Text(testComicPanel.getId(), 2, "thought", "console");
+    Text secondText = new Text(testComicPanel.getId(), 2, "thought", "caption", "console");
     secondText.save();
     testComicPanel.delete();
     assertEquals(0, Text.all().size());
