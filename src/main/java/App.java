@@ -205,21 +205,6 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    // get("/books/:book_id/pages/:page_id/two-page-display", (request, response) -> {
-    //   Map<String, Object> model = new HashMap<String, Object>();
-    //   Book book = Book.find(Integer.parseInt(request.params(":book_id")));
-    //   Page page1 = book.getPages().get(0);
-    //   Page page2 = book.getPages().get(1);
-    //   model.put("page1Panels", page1.getPanels());
-    //   model.put("page2Panels", page2.getPanels());
-    //   String firstPage = page1.getLayout();
-    //   String secondPage = page2.getLayout();
-    //   model.put("template", "templates/two-pages.vtl");
-    //   model.put("first-page", "templates/page-" + firstPage + ".vtl");
-    //   model.put("second-page", "templates/page-" + secondPage + ".vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
-
     get("/lost", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("template", "templates/building-comic.vtl");
