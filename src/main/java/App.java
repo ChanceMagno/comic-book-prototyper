@@ -15,7 +15,7 @@ public class App {
 
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
-
+    // String layout1 = "templates/layout1."
     File uploadDir = new File("src/main/resources/public/img/");
     uploadDir.mkdir();
 
@@ -61,7 +61,10 @@ public class App {
       Book book = Book.find(Integer.parseInt(request.params(":book_id")));
       model.put("pages", book.getPages());
       model.put("book", book);
-      model.put("template", "templates/page-list.vtl");
+      List<Page> pages = book.getPages();
+      model.put("panel", book.getPages().get(0).getPanels());
+      model.put("here", "templates/page-" + book.getPages().get(0).getLayout() + ".vtl");
+      model.put("template", "templates/book-pages.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
