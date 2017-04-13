@@ -5,10 +5,12 @@ public class Page {
 private int id;
 private int book_id;
 private String layout;
+private int sequence;
 
-  public Page(int book_id, String layout) {
+  public Page(int book_id, String layout, int sequence) {
     this.book_id = book_id;
     this.layout = layout;
+    this.sequence = sequence;
   }
 
   public int getBookId() {
@@ -23,13 +25,17 @@ private String layout;
     return id;
   }
 
+  public int getSequence(){
+    return sequence;
+  }
+
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO pages (book_id, layout) VALUES (:book_id, :layout);";
+      String sql = "INSERT INTO pages (book_id, layout, sequence) VALUES (:book_id, :layout, :sequence);";
       this.id = (int) con.createQuery(sql, true)
       .addParameter("book_id", this.book_id)
       .addParameter("layout", this.layout)
-      .executeUpdate()
+      .addParameter("sequence", this.sequence)      .executeUpdate()
       .getKey();
     }
   }
@@ -48,7 +54,8 @@ private String layout;
     } else {
       Page newPage = (Page) otherPage;
       return
-      this.getBookId() == newPage.getBookId() && this.getLayout().equals(newPage.getLayout());
+      this.getBookId() == newPage.getBookId() && this.getLayout().equals(newPage.getLayout()) &&
+      this.getSequence() == newPage.getSequence();
     }
 }
 

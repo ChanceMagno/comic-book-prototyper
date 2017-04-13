@@ -12,7 +12,7 @@ public class PageTest {
   public void page_classinstatiates_true() {
     Book myBook = new Book("Comic One", 1);
     myBook.save();
-    Page page = new Page(myBook.getId(), "layout1");
+    Page page = new Page(myBook.getId(), "layout1", 1);
     assertTrue(page instanceof Page);
   }
 
@@ -20,7 +20,7 @@ public class PageTest {
   public void page_instantiatesWithAllMembers_true() {
     Book myBook = new Book("Comic One", 1);
     myBook.save();
-    Page page = new Page(myBook.getId(), "layout1");
+    Page page = new Page(myBook.getId(), "layout1", 1);
     assertEquals(myBook.getId(), page.getBookId());
     assertEquals("layout1", page.getLayout());
   }
@@ -31,9 +31,9 @@ public class PageTest {
     myBook.save();
     Book myBook1 = new Book("Comic One", 1);
     myBook1.save();
-    Page page = new Page(myBook.getId(), "layout1");
+    Page page = new Page(myBook.getId(), "layout1", 1);
     page.save();
-    Page page1 = new Page(myBook1.getId(), "layout2");
+    Page page1 = new Page(myBook1.getId(), "layout2", 1);
     page1.save();
     assertEquals(page, Page.all().get(0));
     assertEquals(page1, Page.all().get(1));
@@ -43,7 +43,7 @@ public class PageTest {
   public void find_returnsClassByID_true () {
     Book myBook = new Book("comic one", 1);
     myBook.save();
-    Page page = new Page(myBook.getId(), "layout1");
+    Page page = new Page(myBook.getId(), "layout1", 1);
     page.save();
     assertEquals(page, Page.find(page.getId()));
   }
@@ -52,7 +52,7 @@ public class PageTest {
   public void updatePageLayout_returnsUpdatedLayout_true() {
     Book myBook = new Book("comic one", 1);
     myBook.save();
-    Page page1 = new Page(myBook.getId(), "layout1");
+    Page page1 = new Page(myBook.getId(), "layout1", 1);
     page1.save();
     page1.updatePageLayout("layout3", page1.getId());
     assertEquals("layout3", Page.find(page1.getId()).getLayout());
@@ -62,7 +62,7 @@ public class PageTest {
   public void delete_deletesPageAndPanels_true() {
     Book myBook = new Book("comic one", 1);
     myBook.save();
-    Page page1 = new Page(myBook.getId(), "layout1");
+    Page page1 = new Page(myBook.getId(), "layout1", 3);
     page1.save();
     ComicPanel panel = new ComicPanel(page1.getId(), 3);
     panel.save();
@@ -78,7 +78,7 @@ public class PageTest {
   public void getPanels_returnsAllPanelsBasedOnPageID_true() {
     Book myBook = new Book("comic one", 1);
     myBook.save();
-    Page page1 = new Page(myBook.getId(), "layout1");
+    Page page1 = new Page(myBook.getId(), "layout1", 4);
     page1.save();
     ComicPanel panel = new ComicPanel(page1.getId(), 3);
     panel.save();
@@ -92,7 +92,7 @@ public class PageTest {
   public void deletePanels_deletesAllPanelsInPage_true() {
     Book myBook = new Book("comic one", 1);
     myBook.save();
-    Page page1 = new Page(myBook.getId(), "layout1");
+    Page page1 = new Page(myBook.getId(), "layout1", 5);
     page1.save();
     ComicPanel panel = new ComicPanel(page1.getId(), 3);
     panel.save();
