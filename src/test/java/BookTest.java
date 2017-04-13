@@ -81,9 +81,9 @@ public class BookTest {
   public void getPages_returnsAllPages_true() {
     Book myBook = new Book("Comic One", 1);
     myBook.save();
-    Page page = new Page(myBook.getId(), "layout1");
+    Page page = new Page(myBook.getId(), "layout1", 1);
     page.save();
-    Page page1 = new Page(myBook.getId(), "layout2");
+    Page page1 = new Page(myBook.getId(), "layout2", 2);
     page1.save();
     assertEquals(page, myBook.getPages().get(0));
     assertEquals(page1, myBook.getPages().get(1));
@@ -93,7 +93,7 @@ public class BookTest {
   public void delete_deletesBooksPagesPanelsAndTexts_true() {
     Book testBook = new Book("Jefferson Conflict", 1);
     testBook.save();
-    Page testPage = new Page(testBook.getId(), "layout1");
+    Page testPage = new Page(testBook.getId(), "layout1", 1);
     testPage.save();
     ComicPanel testComicPanel = new ComicPanel(testPage.getId(), 2);
     testComicPanel.setImagePath("/img/bozo.jpg");
