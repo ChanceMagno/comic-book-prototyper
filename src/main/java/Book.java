@@ -54,7 +54,7 @@ public class Book {
 
    public List<Page> getPages() {
    try(Connection con = DB.sql2o.open()) {
-     String sql = "SELECT * FROM pages where book_id = :book_id";
+     String sql = "SELECT * FROM pages where book_id = :book_id ORDER BY id";
      return con.createQuery(sql)
        .addParameter("book_id", this.id)
        .executeAndFetch(Page.class);
