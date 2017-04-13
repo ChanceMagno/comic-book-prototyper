@@ -1,9 +1,40 @@
 <!-- all-books.vtl -->
-#foreach ($book in $books)
-<div class="row">
-  <div class="col-offset-md-2 col-md-8">
-    $book.getTitle()
+<div class="container">
+    <img src="/img/comic-book-banner-2.jpg" class="header-img">
+</div>
+<div class="container">
+  <div class="btn-group btn-group-justified">
+    <a href="/" class="btn">Home</a>
+    <a href="#" class="btn">About Us</a>
+    <a href="#" class="btn">Other</a>
+  </div>
+</div>
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="header">Comic Book Prototyper</h1>
     <hr>
+    <h3>Create a Comic Book from scratch using a variety of templates, Images, and Textboxes.</h3>
+    <hr>
+    <br>
+    <div class="container">
+      #foreach ($book in $books)
+      <div class="row">
+        <div class="col-md-8 comicTitle">
+          <a href="/books/$book.getId()/pages">$book.getTitle()</a>
+        </div>
+      </div>
+      <br>
+      <hr>
+      #end
+      <div class="btn-group btn-group-justified">
+        <a href="/books/new" class="btn">Start A New Comic Book!</a>
+      </div>
+    </div>
+    <br>
+    <hr>
+    <div class="container">
+      <p class="footer">© 2017 Epicodus. 5th Week Project</p>
+    </div>
   </div>
 </div>
 
