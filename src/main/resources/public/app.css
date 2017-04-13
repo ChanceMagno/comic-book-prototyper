@@ -3,12 +3,6 @@
   color: white;
 }
 
-.layout {
-  text-align: center;
-  float: none;
-  margin: 0 auto;
-}
-
 .comicTitle {
   text-align: center;
   float: none;
@@ -42,7 +36,6 @@
   color: white;
 }
 
-
 .btn {
     border: none;
     color: white;
@@ -63,7 +56,13 @@
 }
 
 .redirectImage img {
+  align-items: center;
+  align-content: center;
   border-radius: 50%;
+}
+
+.redirect {
+  text-align: center;
 }
 
 body {
