@@ -15,7 +15,7 @@
 #else
 #end
 <br>
-  <a href="/books/$page.getBookId()/pages/$panel.getPageId()/panels/$panel.getId()/texts/new">Add new text.</a>
+
 <br>
 #if ($panel.getImagePath())
 <img src="$panel.getImagePath()" alt="Current image">
@@ -33,4 +33,19 @@
   <input type="submit"  class="btn" value="Upload">
 </form>
 #end
-<a href="/books/$page.getBookId()/pages/$panel.getPageId()">Return to page</a>
+
+
+<br>
+<hr>
+<div class="container">
+  <div class="btn-group btn-group-justified">
+    <a class="btn" href="/books/$page.getBookId()/pages/$panel.getPageId()">Return to page</a>
+    <a class="btn" href="/books/$page.getBookId()/pages/$panel.getPageId()/panels/$panel.getId()/texts/new">Add new text.</a>
+    <a class="btn" href="/" class="btn">Home</a>
+  </div>
+</div>
+<hr>
+<br>
+<div class="container">
+  <p class="footer">© 2017 Epicodus. 5th Week Project</p>
+</div>
