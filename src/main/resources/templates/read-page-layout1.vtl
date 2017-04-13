@@ -1,3 +1,17 @@
+
+<div class="container">
+    <img src="/img/comic-book-banner-2.jpg" class="header-img">
+</div>
+<div class="container">
+  <div class="btn-group btn-group-justified">
+    <a href="/" class="btn">Home</a>
+    <a href="#" class="btn">About Us</a>
+    <a href="#" class="btn">Other</a>
+  </div>
+</div>
+<div class="container">
+  <div class="jumbotron">
+
 <!-- panel-select.vtl -->
 
 <div class="class layout">
@@ -6,12 +20,18 @@
     <div class="col-md-4 fill two-panels" id="layout1-panel1" data-toggle="modal" data-target="#panel1Modal">
       #if ($panel.get(0).getImagePath())
         <img src="$panel.get(0).getImagePath()" alt="Current image">
+        #if ($panel.get(0).getTexts().size() > 0)
+          <p class="$panel.get(0).getTexts().get(0).getOrientation()">$panel.get(0).getTexts().get(0).getBody()</p>
+        #end
       #end
     </div>
     <!-- comic panel 2 -->
     <div class="col-md-4 fill two-panels" id="layout1-panel2" data-toggle="modal" data-target="#panel2Modal">
       #if ($panel.get(1).getImagePath())
         <img src="$panel.get(1).getImagePath()" alt="Current image">
+        #if ($panel.get(1).getTexts().size() > 0)
+          <p class="$panel.get(1).getTexts().get(0).getOrientation()">$panel.get(1).getTexts().get(0).getBody()</p>
+        #end
       #end
     </div>
   </div>
@@ -20,12 +40,18 @@
     <div class="col-md-4 fill two-panels" id="layout1-panel3" data-toggle="modal" data-target="#panel3Modal">
       #if ($panel.get(2).getImagePath())
         <img src="$panel.get(2).getImagePath()" alt="Current image">
+        #if ($panel.get(2).getTexts().size() > 0)
+          <p class="$panel.get(2).getTexts().get(0).getOrientation()">$panel.get(2).getTexts().get(0).getBody()</p>
+        #end
       #end
     </div>
     <!-- comic panel 4 -->
     <div class="col-md-4 fill two-panels" id="layout1-panel4" data-toggle="modal" data-target="#panel4Modal">
       #if ($panel.get(3).getImagePath())
         <img src="$panel.get(3).getImagePath()" alt="Current image">
+        #if ($panel.get(3).getTexts().size() > 0)
+          <p class="$panel.get(3).getTexts().get(0).getOrientation()">$panel.get(3).getTexts().get(0).getBody()</p>
+        #end
       #end
     </div>
   </div>
@@ -34,12 +60,18 @@
     <div class="col-md-4 fill two-panels" id="layout1-panel5" data-toggle="modal" data-target="#panel5Modal">
       #if ($panel.get(4).getImagePath())
         <img src="$panel.get(4).getImagePath()" alt="Current image">
+        #if ($panel.get(4).getTexts().size() > 0)
+          <p class="$panel.get(4).getTexts().get(0).getOrientation()">$panel.get(4).getTexts().get(0).getBody()</p>
+        #end
       #end
     </div>
     <!-- comic panel 6 -->
     <div class="col-md-4 fill two-panels" id="layout1-panel6" data-toggle="modal" data-target="#panel6Modal">
       #if ($panel.get(5).getImagePath())
         <img src="$panel.get(5).getImagePath()" alt="Current image">
+        #if ($panel.get(5).getTexts().size() > 0)
+          <p class="$panel.get(5).getTexts().get(0).getOrientation()">$panel.get(5).getTexts().get(0).getBody()</p>
+        #end
       #end
     </div>
   </div>
@@ -52,9 +84,99 @@
       <div class="modal-body" data-dismiss="modal">
         #if ($panel.get(0).getImagePath())
           <img src="$panel.get(0).getImagePath()" alt="Current image">
+          #if ($panel.get(0).getTexts().size() > 0)
+            <p class="$panel.get(0).getTexts().get(0).getOrientation()">$panel.get(0).getTexts().get(0).getBody()</p>
+          #end
         #end
       </div>
     </div>
   </div>
+</div>
+<div class="modal fade" id="panel2Modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body" data-dismiss="modal">
+        #if ($panel.get(1).getImagePath())
+          <img src="$panel.get(1).getImagePath()" alt="Current image">
+          #if ($panel.get(1).getTexts().size() > 0)
+            <p class="$panel.get(1).getTexts().get(0).getOrientation()">$panel.get(1).getTexts().get(0).getBody()</p>
+          #end
+        #end
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="panel3Modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body" data-dismiss="modal">
+        #if ($panel.get(2).getImagePath())
+          <img src="$panel.get(2).getImagePath()" alt="Current image">
+          #if ($panel.get(2).getTexts().size() > 0)
+            <p class="$panel.get(2).getTexts().get(0).getOrientation()">$panel.get(2).getTexts().get(0).getBody()</p>
+          #end
+        #end
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="panel4Modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body" data-dismiss="modal">
+        #if ($panel.get(3).getImagePath())
+          <img src="$panel.get(3).getImagePath()" alt="Current image">
+          #if ($panel.get(3).getTexts().size() > 0)
+            <p class="$panel.get(3).getTexts().get(0).getOrientation()">$panel.get(3).getTexts().get(0).getBody()</p>
+          #end
+        #end
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="panel5Modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body" data-dismiss="modal">
+        #if ($panel.get(4).getImagePath())
+          <img src="$panel.get(4).getImagePath()" alt="Current image">
+          #if ($panel.get(4).getTexts().size() > 0)
+            <p class="$panel.get(4).getTexts().get(0).getOrientation()">$panel.get(4).getTexts().get(0).getBody()</p>
+          #end
+        #end
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="panel6Modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body" data-dismiss="modal">
+        #if ($panel.get(5).getImagePath())
+          <img src="$panel.get(5).getImagePath()" alt="Current image">
+          #if ($panel.get(5).getTexts().size() > 0)
+            <p class="$panel.get(5).getTexts().get(0).getOrientation()">$panel.get(5).getTexts().get(0).getBody()</p>
+          #end
+        #end
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+<hr>
+<div class="container">
+  <div class="btn-group btn-group-justified">
+    <a href="/" class="btn">Go Back</a>
+    <a href="#" class="btn btn-success">Create Comic Book</a>
+    <a href="#" class="btn btn-primary">Add Page</a>
+  </div>
+</div>
+<hr>
+<br>
+<div class="container">
+  <p class="footer">© 2017 Epicodus. 5th Week Project</p>
+</div>
+</div>
 </div>
 <!-- panel-select.vtl -->
