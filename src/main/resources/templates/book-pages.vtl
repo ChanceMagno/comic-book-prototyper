@@ -1,0 +1,35 @@
+<!-- book-pages.vtl -->
+<div class="container">
+    <img src="/img/comic-book-banner-2.jpg" class="header-img">
+</div>
+<div class="container">
+  <div class="btn-group btn-group-justified">
+    <a href="/" class="btn">Home</a>
+    <a href="/books" class="btn">All Comics</a>
+    <a href="#" class="btn">Other</a>
+  </div>
+</div>
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="header">$book.getTitle()</h1>
+    <hr>
+    <h3></h3>
+    <hr>
+    <br>
+    <div class="container">
+
+        #parse( $here )
+    
+      <div class="btn-group btn-group-justified">
+        <a href="/books/new" class="btn">Start A New Comic Book!</a>
+      </div>
+    </div>
+    <br>
+    <hr>
+    <div class="container">
+      <p class="footer">© 2017 Epicodus. 5th Week Project</p>
+    </div>
+  </div>
+</div>
+
+<!-- book-pages.vtl -->
