@@ -28,7 +28,7 @@ public class App {
     get("/books", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("books", Book.all());
-      model.put("template", "templates/library.vtl");
+      model.put("template", "templates/all-books.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
@@ -59,9 +59,8 @@ public class App {
     get("/books/:book_id/pages", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       Book book = Book.find(Integer.parseInt(request.params(":book_id")));
-      List<Page> pages = book.getPages();
+      model.put("pages", book.getPages());
       model.put("book", book);
-      model.put("pages", pages);
       model.put("template", "templates/page-list.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
