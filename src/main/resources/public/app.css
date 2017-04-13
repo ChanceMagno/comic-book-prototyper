@@ -3,6 +3,11 @@
   color: white;
 }
 
+.btn-group-justified {
+  background-color: red;
+  color: white;
+}
+
 .redirectImage img {
   border-radius: 50%;
 }

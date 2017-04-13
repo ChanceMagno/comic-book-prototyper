@@ -27,8 +27,7 @@ public class App {
 
     get("/books", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      List<Book> books = Book.all();
-      model.put("books", books);
+      model.put("books", Book.all());
       model.put("template", "templates/library.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
