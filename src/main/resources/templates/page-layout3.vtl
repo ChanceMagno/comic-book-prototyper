@@ -1,4 +1,17 @@
-<!-- page-layout-3 -->
+<div class="container">
+    <img src="/img/comic-book-banner-2.jpg" class="header-img">
+</div>
+<div class="container">
+  <div class="btn-group btn-group-justified">
+    <a href="/" class="btn">Home</a>
+    <a href="#" class="btn">About Us</a>
+    <a href="#" class="btn">Other</a>
+  </div>
+</div>
+<div class="container">
+  <div class="jumbotron">
+
+  <!-- page-layout-3 -->
 <div class="class layout">
   <div class="row" id="layout3-row1">
     <!-- comic panel 1 -->
@@ -6,6 +19,9 @@
     <div class="col-md-8 fill one-panel" id="layout3-panel1">
       #if ($panel.get(0).getImagePath())
         <img src="$panel.get(0).getImagePath()" alt="Current image">
+        #end
+        #if ($panel.get(0).getTexts().size() > 0)
+        <p class="$panel.get(0).getTexts().get(0).getOrientation()">$panel.get(0).getTexts().get(0).getBody()</p>
       #end
     </div>
     </a>
@@ -16,24 +32,33 @@
     <div class="col-md-4 fill two-panels" id="layout3-panel2">
       #if ($panel.get(1).getImagePath())
         <img src="$panel.get(1).getImagePath()" alt="Current image">
+        #end
+        #if ($panel.get(1).getTexts().size() > 0)
+        <p class="$panel.get(1).getTexts().get(0).getOrientation()">$panel.get(1).getTexts().get(0).getBody()</p>
       #end
     </div>
     </a>
-    <!-- comic panel 4 -->
+    <!-- comic panel 3 -->
     <a href="/books/$book.getId()/pages/$page.getId()/panels/$panel.get(2).getId()">
     <div class="col-md-4 fill two-panels" id="layout3-panel3">
       #if ($panel.get(2).getImagePath())
         <img src="$panel.get(2).getImagePath()" alt="Current image">
+        #end
+        #if ($panel.get(2).getTexts().size() > 0)
+        <p class="$panel.get(2).getTexts().get(0).getOrientation()">$panel.get(2).getTexts().get(0).getBody()</p>
       #end
     </div>
     </a>
   </div>
   <div class="row" id="layout3-row3">
-    <!-- comic panel 5 -->
+    <!-- comic panel 4 -->
     <a href="/books/$book.getId()/pages/$page.getId()/panels/$panel.get(3).getId()">
     <div class="col-md-8 fill one-panel" id="layout3-panel4">
       #if ($panel.get(3).getImagePath())
         <img src="$panel.get(3).getImagePath()" alt="Current image">
+        #end
+        #if ($panel.get(3).getTexts().size() > 0)
+        <p class="$panel.get(3).getTexts().get(0).getOrientation()">$panel.get(3).getTexts().get(0).getBody()</p>
       #end
     </div>
     </a>
