@@ -3,13 +3,13 @@
 <div class="class layout">
   <div class="row" id="layout1-row1">
     <!-- comic panel 1 -->
-    <div class="col-md-4 fill two-panels" id="layout1-panel1">
+    <div class="col-md-4 fill two-panels" id="layout1-panel1" data-toggle="modal" data-target="#panel1Modal">
       #if ($panel.get(0).getImagePath())
         <img src="$panel.get(0).getImagePath()" alt="Current image">
       #end
     </div>
     <!-- comic panel 2 -->
-    <div class="col-md-4 fill two-panels" id="layout1-panel2">
+    <div class="col-md-4 fill two-panels" id="layout1-panel2" data-toggle="modal" data-target="#panel2Modal">
       #if ($panel.get(1).getImagePath())
         <img src="$panel.get(1).getImagePath()" alt="Current image">
       #end
@@ -17,13 +17,13 @@
   </div>
   <!-- comic panel 3 -->
   <div class="row" id="layout1-row2">
-    <div class="col-md-4 fill two-panels" id="layout1-panel3">
+    <div class="col-md-4 fill two-panels" id="layout1-panel3" data-toggle="modal" data-target="#panel3Modal">
       #if ($panel.get(2).getImagePath())
         <img src="$panel.get(2).getImagePath()" alt="Current image">
       #end
     </div>
     <!-- comic panel 4 -->
-    <div class="col-md-4 fill two-panels" id="layout1-panel4">
+    <div class="col-md-4 fill two-panels" id="layout1-panel4" data-toggle="modal" data-target="#panel4Modal">
       #if ($panel.get(3).getImagePath())
         <img src="$panel.get(3).getImagePath()" alt="Current image">
       #end
@@ -31,16 +31,29 @@
   </div>
   <div class="row" id="layout1-row3">
     <!-- comic panel 5 -->
-    <div class="col-md-4 fill two-panels" id="layout1-panel5">
+    <div class="col-md-4 fill two-panels" id="layout1-panel5" data-toggle="modal" data-target="#panel5Modal">
       #if ($panel.get(4).getImagePath())
         <img src="$panel.get(4).getImagePath()" alt="Current image">
       #end
     </div>
     <!-- comic panel 6 -->
-    <div class="col-md-4 fill two-panels" id="layout1-panel6">
+    <div class="col-md-4 fill two-panels" id="layout1-panel6" data-toggle="modal" data-target="#panel6Modal">
       #if ($panel.get(5).getImagePath())
         <img src="$panel.get(5).getImagePath()" alt="Current image">
       #end
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="panel1Modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body" data-dismiss="modal">
+        #if ($panel.get(0).getImagePath())
+          <img src="$panel.get(0).getImagePath()" alt="Current image">
+        #end
+      </div>
     </div>
   </div>
 </div>

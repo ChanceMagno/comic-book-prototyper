@@ -159,9 +159,8 @@ public class App {
       int panel_id = panel.getId();
       int sequence = panel.getTexts().size() + 1;
       String body = request.queryParams("body");
-      String box_style = request.queryParams("box_style");
-      String font = request.queryParams("font");
-      Text text = new Text(panel_id, sequence, body, box_style, font);
+      String orientation = request.queryParams("orientation");
+      Text text = new Text(panel_id, sequence, body, orientation);
       text.save();
       String url = String.format("/books/%d/pages/%d/panels/%d", page.getBookId(), page.getId(), panel.getId());
       response.redirect(url);
@@ -186,8 +185,7 @@ public class App {
       ComicPanel panel = ComicPanel.find(Integer.parseInt(request.params(":panel_id")));
       Text text = Text.find(Integer.parseInt(request.params(":text_id")));
       text.setBody(request.queryParams("body"));
-      text.setBoxStyle(request.queryParams("box_style"));
-      text.setFont(request.queryParams("font"));
+      text.setOrientation(request.queryParams("orientation"));
       text.update();
       String url = String.format("/books/%d/pages/%d/panels/%d", page.getBookId(), page.getId(), panel.getId());
       response.redirect(url);
