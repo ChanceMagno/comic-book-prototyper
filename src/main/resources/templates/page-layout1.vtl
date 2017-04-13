@@ -17,6 +17,9 @@
 
     <div class="class layout">
       <div class="row" id="layout1-row1">
+        <div class="col-md-3">
+
+        </div>
         <!-- comic panel 1 -->
         <a href="/books/$book.getId()/pages/$page.getId()/panels/$panel.get(0).getId()">
         <div class="col-md-4 fill two-panels" id="layout1-panel1">
@@ -42,6 +45,9 @@
       </div>
       <!-- comic panel 3 -->
       <div class="row" id="layout1-row2">
+        <div class="col-md-3">
+
+        </div>
         <a href="/books/$book.getId()/pages/$page.getId()/panels/$panel.get(2).getId()">
         <div class="col-md-4 fill two-panels" id="layout1-panel3">
           #if ($panel.get(2).getImagePath())
@@ -65,6 +71,9 @@
         </a>
       </div>
       <div class="row" id="layout1-row3">
+        <div class="col-md-3">
+
+        </div>
         <!-- comic panel 5 -->
         <a href="/books/$book.getId()/pages/$page.getId()/panels/$panel.get(4).getId()">
         <div class="col-md-4 fill two-panels" id="layout1-panel5">
@@ -96,8 +105,8 @@
     <div class="container">
       <div class="btn-group btn-group-justified">
         <a href="/" class="btn">Go Back</a>
-        <a href="/books/$book.getId()/pages/new" class="btn btn-primary">Add Page</a>
-        <a href="/books/$book.getId()/pages/" class="btn btn-success">Next Page</a>
+        <a href="/books/$book.getId()/pages/new" class="btn">Add Page</a>
+        <a href="/books/$book.getId()/pages/" class="btn">Next Page</a>
       </div>
     </div>
     <hr>
