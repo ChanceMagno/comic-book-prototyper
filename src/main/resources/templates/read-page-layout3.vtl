@@ -3,21 +3,31 @@
   <div class="row" id="layout3-row1">
     <!-- comic panel 1 -->
     <div class="col-md-8 fill one-panel" id="layout3-panel1">
-      <img class="img-one" src="http://www.geeklegacy.com/wp-content/uploads/2014/02/20140212_184218.jpg" alt="" />
-      </div>
+      #if ($panel.get(0).getImagePath())
+        <img src="$panel.get(0).getImagePath()" alt="Current image">
+      #end
+    </div>
   </div>
   <!-- comic panel 2 -->
   <div class="row" id="layout3-row2">
     <div class="col-md-4 fill two-panels" id="layout3-panel2">
-      <img class="img-one"  src="https://s-media-cache-ak0.pinimg.com/originals/22/ab/8c/22ab8cdccbf176825ff653891af3a156.jpg" alt="" />
+      #if ($panel.get(1).getImagePath())
+        <img src="$panel.get(1).getImagePath()" alt="Current image">
+      #end
     </div>
     <!-- comic panel 4 -->
     <div class="col-md-4 fill two-panels" id="layout3-panel3">
+      #if ($panel.get(2).getImagePath())
+        <img src="$panel.get(2).getImagePath()" alt="Current image">
+      #end
     </div>
   </div>
   <div class="row" id="layout3-row3">
     <!-- comic panel 5 -->
     <div class="col-md-8 fill one-panel" id="layout3-panel4">
+      #if ($panel.get(3).getImagePath())
+        <img src="$panel.get(3).getImagePath()" alt="Current image">
+      #end
     </div>
   </div>
 </div>

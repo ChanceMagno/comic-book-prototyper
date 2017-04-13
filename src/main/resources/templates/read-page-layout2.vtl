@@ -3,26 +3,40 @@
   <div class="row" id="layout2-row1">
     <!-- comic panel 1 -->
     <div class="col-md-4 fill two-panels" id="layout2-panel1">
-      <img src="http://www.geeklegacy.com/wp-content/uploads/2014/02/20140212_184218.jpg" alt="" />
+      #if ($panel.get(0).getImagePath())
+        <img src="$panel.get(0).getImagePath()" alt="Current image">
+      #end
     </div>
     <!-- comic panel 2 -->
     <div class="col-md-4 fill two-panels" id="layout2-panel2">
-      <img src="http://cdn3-www.comingsoon.net/assets/uploads/2017/02/Old-Man-Logan-header.jpg" alt="" />
+      #if ($panel.get(1).getImagePath())
+        <img src="$panel.get(1).getImagePath()" alt="Current image">
+      #end
     </div>
   </div>
     <div class="row" id="layout2-row2">
     <!-- comic panel 3 -->
     <div class="col-md-8 fill one-panel" id="layout2-panel3">
-      <img src="https://s-media-cache-ak0.pinimg.com/originals/22/ab/8c/22ab8cdccbf176825ff653891af3a156.jpg" alt="" />
+      #if ($panel.get(2).getImagePath())
+        <img src="$panel.get(2).getImagePath()" alt="Current image">
+      #end
     </div>
   </div>
   <div class="row" id="layout2-row3">
     <!-- comic panel 4 -->
     <div class="col-md-4 fill two-panels" id="layout2-panel4">
+      #if ($panel.get(3).getImagePath())
+        <img src="$panel.get(3).getImagePath()" alt="Current image">
+      #end
     </div>
     <!-- comic panel 5 -->
     <div class="col-md-4 fill two-panels" id="layout2-panel5">
+      #if ($panel.get(4).getImagePath())
+        <img src="$panel.get(4).getImagePath()" alt="Current image">
+      #end
     </div>
+    </div>
+
   </div>
 </div>
 <!--page-layout-2-->

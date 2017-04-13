@@ -1,3 +1,12 @@
+.btn  {
+  background-color: red;
+  color: white;
+}
+
+.redirectImage img {
+  border-radius: 50%;
+}
+
 body {
   background-color: #8f8e8d;
 }
@@ -81,4 +90,77 @@ h4 {
   border-style: solid;
   border-width: 3px black;
   outline: 6px solid white;
+}
+
+.img-one {
+  position:absolute;
+  z-index: 1;
+}
+
+.img-two {
+  position: absolute;;
+  z-index: 2;
+  width: auto!important;
+  height: auto!important;
+}
+
+.img-three {
+  position: absolute;;
+  z-index: 3;
+  width: auto!important;
+  height: auto!important;
+}
+
+.topright {
+  /*the css below is to position the element only*/
+  z-index: 4;
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  /*the css below is to make the bubble only*/
+  width: 190px;
+  height: 70px;
+  padding: 10px;
+  background: #FFFFFF;
+  -webkit-border-radius: 43px;
+  -moz-border-radius: 43px;
+  border-radius: 43px;
+  border: #000000 solid 3px;
+  font-size: 18px;
+}
+
+.topleft {
+  /*the css below is to position the element only*/
+  z-index: 4;
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  /*the css below is to make the bubble only*/
+  width: 190px;
+  height: 70px;
+  padding: 10px;
+  background: #FFFFFF;
+  -webkit-border-radius: 43px;
+  -moz-border-radius: 43px;
+  border-radius: 43px;
+  border: #000000 solid 3px;
+  font-size: 18px;
+}
+
+.center {
+  /*the css below is to position the element only*/
+  z-index: 4;
+  position: absolute;
+  top: 8px;
+  margin: auto;
+  /*the css below is to make the bubble only*/
+  width: 190px;
+  height: 70px;
+  padding: 10px;
+  background: #FFFFFF;
+  -webkit-border-radius: 43px;
+  -moz-border-radius: 43px;
+  border-radius: 43px;
+  border: #000000 solid 3px;
+  font-size: 18px;
 }

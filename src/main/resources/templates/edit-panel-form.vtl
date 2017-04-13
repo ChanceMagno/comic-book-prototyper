@@ -1,5 +1,5 @@
 <h3>Edit panel</h3>
-
+<a href="/books/$page.getBookId()/pages/$panel.getPageId()">Return to page</a>
 #if ($texts.size() > 0)
   <p>This panel's current text:</p>
   #foreach($text in $texts)
@@ -8,6 +8,9 @@
     <p>Balloon style: $text.getBoxStyle()</p>
     <p>Font: $text.getFont()</p>
     <a href="/books/$page.getBookId()/pages/$panel.getPageId()/panels/$panel.getId()/texts/$text.getId()/update">Edit this text.</a>
+    <form action="/books/$page.getBookId()/pages/$panel.getPageId()/panels/$panel.getId()/texts/$text.getId()/delete" method="post">
+      <button type="submit" class="btn btn-warning">Delete</button>
+    </form>
     <br>
   #end
 #else
@@ -28,6 +31,7 @@
   <input id="panel_id" type="hidden" name="panel_id" value="$panel.getId()">
   <label for="upfile">Attach an image to this panel.</label>
   <input type="file" name="uploaded_file" required><br>
-  <input type="submit" value="Upload">
+  <input type="submit"  class="btn" value="Upload">
 </form>
 #end
+<a href="/books/$page.getBookId()/pages/$panel.getPageId()">Return to page</a>
