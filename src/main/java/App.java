@@ -158,9 +158,8 @@ public class App {
       int panel_id = panel.getId();
       int sequence = panel.getTexts().size() + 1;
       String body = request.queryParams("body");
-      String box_style = request.queryParams("box_style");
-      String font = request.queryParams("font");
-      Text text = new Text(panel_id, sequence, body, box_style, font);
+      String orientation = request.queryParams("orientation");
+      Text text = new Text(panel_id, sequence, body, orientation);
       text.save();
       String url = String.format("/books/%d/pages/%d/panels/%d", page.getBookId(), page.getId(), panel.getId());
       response.redirect(url);
@@ -185,8 +184,7 @@ public class App {
       ComicPanel panel = ComicPanel.find(Integer.parseInt(request.params(":panel_id")));
       Text text = Text.find(Integer.parseInt(request.params(":text_id")));
       text.setBody(request.queryParams("body"));
-      text.setBoxStyle(request.queryParams("box_style"));
-      text.setFont(request.queryParams("font"));
+      text.setOrientation(request.queryParams("orientation"));
       text.update();
       String url = String.format("/books/%d/pages/%d/panels/%d", page.getBookId(), page.getId(), panel.getId());
       response.redirect(url);
@@ -203,21 +201,6 @@ public class App {
       response.redirect(url);
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
-
-    // get("/books/:book_id/pages/:page_id/two-page-display", (request, response) -> {
-    //   Map<String, Object> model = new HashMap<String, Object>();
-    //   Book book = Book.find(Integer.parseInt(request.params(":book_id")));
-    //   Page page1 = book.getPages().get(0);
-    //   Page page2 = book.getPages().get(1);
-    //   model.put("page1Panels", page1.getPanels());
-    //   model.put("page2Panels", page2.getPanels());
-    //   String firstPage = page1.getLayout();
-    //   String secondPage = page2.getLayout();
-    //   model.put("template", "templates/two-pages.vtl");
-    //   model.put("first-page", "templates/page-" + firstPage + ".vtl");
-    //   model.put("second-page", "templates/page-" + secondPage + ".vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
 
     get("/lost", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();

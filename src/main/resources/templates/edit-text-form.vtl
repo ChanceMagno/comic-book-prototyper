@@ -1,17 +1,25 @@
 <h3>Edit text</h3>
-
 <form action="/books/$page.getBookId()/pages/$panel.getPageId()/panels/$panel.getId()/texts/$text.getId()/update" method="post">
   <div class="form-group">
     <label for="body">Body</label>
     <input id="body" name="body" type="text" class="form-control" value="$text.getBody()" required>
   </div>
-  <div class="form-group">
-    <label for="box_style">Box Style</label>
-    <input id="box_style" name="box_style" type="text" class="form-control" value="$text.getBoxStyle()" required>
-  </div>
-  <div class="form-group">
-    <label for="font">Font</label>
-    <input id="font" name="font" type="text" class="form-control" value="$text.getFont()" required>
-  </div>
+  <select name="orientation">
+          #if ($text.getOrientation().equals("center"))
+            <option selected="selected" value="center">Center</option>
+          #else
+            <option value="center">Center</option>
+          #end
+          #if ($text.getOrientation().equals("topright"))
+            <option selected="selected" value="topright">Top Right</option>
+          #else
+            <option value="topright">Top Right</option>
+          #end
+          #if ($text.getOrientation().equals("topleft"))
+            <option selected="selected" value="topleft">Top Left</option>
+          #else
+            <option value="topleft">Top Left</option>
+          #end
+  </select>
   <button type="submit" class="btn">Update text</button>
 </form>
