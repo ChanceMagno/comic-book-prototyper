@@ -1,11 +1,11 @@
 # _Comic Book Prototyper_
 
-#### _comic-book-prototyper, 04-10-2017_
+#### _An Application that allows users to create a Comic Book, 04-10-2017_
 
 #### By _**Nathaniel Meyer, Blake Womack, Chance Magno, Taylor Loftis-Kim**_
 
 ## Description
-_Example text for the description of the project_
+_This application allows users to create a Comic Book from scratch. Users will be able to select from a variety of pre made templates, which will then redirect them to a page where they may edit each panel individually by adding photos. Multiple pages can be added to their Comic Book Creation. _
 
 
 ## Specifications
