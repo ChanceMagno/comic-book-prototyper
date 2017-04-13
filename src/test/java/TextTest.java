@@ -57,7 +57,7 @@ public class TextTest {
   public void all_returnsAllInstancesOfText_true() {
     Book testBook = new Book("Jefferson Conflict", 1);
     testBook.save();
-    Page testPage = new Page(testBook.getId(), "layout1");
+    Page testPage = new Page(testBook.getId(), "layout1", 1);
     testPage.save();
     ComicPanel testComicPanel = new ComicPanel(testPage.getId(), 2);
     testComicPanel.setImagePath("/img/bozo.jpg");
@@ -74,7 +74,7 @@ public class TextTest {
   public void find_returnsAnInstanceOfText_true() {
     Book testBook = new Book("Jefferson Conflict", 1);
     testBook.save();
-    Page testPage = new Page(testBook.getId(), "layout1");
+    Page testPage = new Page(testBook.getId(), "layout1", 1);
     testPage.save();
     ComicPanel testComicPanel = new ComicPanel(testPage.getId(), 2);
     testComicPanel.setImagePath("/img/bozo.jpg");
@@ -89,7 +89,7 @@ public class TextTest {
   public void update_updates_true() {
     Book testBook = new Book("Jefferson Conflict", 1);
     testBook.save();
-    Page testPage = new Page(testBook.getId(), "layout1");
+    Page testPage = new Page(testBook.getId(), "layout1", 1);
     testPage.save();
     ComicPanel firstComicPanel = new ComicPanel(testPage.getId(), 1);
     firstComicPanel.setImagePath("/img/bozo.jpg");
@@ -113,7 +113,7 @@ public class TextTest {
   public void delete_deletes_true() {
     Book testBook = new Book("Jefferson Conflict", 1);
     testBook.save();
-    Page testPage = new Page(testBook.getId(), "layout1");
+    Page testPage = new Page(testBook.getId(), "layout1", 1);
     testPage.save();
     ComicPanel firstComicPanel = new ComicPanel(testPage.getId(), 1);
     firstComicPanel.setImagePath("/img/bozo.jpg");

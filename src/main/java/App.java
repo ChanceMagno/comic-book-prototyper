@@ -93,7 +93,8 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       Book book = Book.find(Integer.parseInt(request.queryParams("book_id")));
       String layoutPicked = request.queryParams("layout");
-      Page page = new Page(book.getId(), layoutPicked);
+      int sequence = book.getPages().size() + 1;
+      Page page = new Page(book.getId(), layoutPicked, sequence);
       page.save();
         int panelsNeeded = 0;
         if (layoutPicked.equals("layout1")) {

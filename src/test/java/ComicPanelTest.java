@@ -37,7 +37,7 @@ public class ComicPanelTest {
   public void save_assignsIdAndSavesObjectToDatabase_true() {
     Book testBook = new Book("Jefferson Conflict", 1);
     testBook.save();
-    Page testPage = new Page(testBook.getId(), "layout1");
+    Page testPage = new Page(testBook.getId(), "layout1", 1);
     testPage.save();
     ComicPanel testComicPanel = new ComicPanel(testPage.getId(), 2);
 
@@ -51,7 +51,7 @@ public class ComicPanelTest {
   public void all_returnsAllInstancesOfComicPanel_true() {
     Book testBook = new Book("Jefferson Conflict", 1);
     testBook.save();
-    Page testPage = new Page(testBook.getId(), "layout1");
+    Page testPage = new Page(testBook.getId(), "layout1", 1);
     testPage.save();
     ComicPanel firstComicPanel = new ComicPanel(testPage.getId(), 2);
     firstComicPanel.setImagePath("/img/bozo.jpg");
@@ -67,7 +67,7 @@ public class ComicPanelTest {
   public void find_returnsAnInstanceOfComicPanel_true() {
     Book testBook = new Book("Jefferson Conflict", 1);
     testBook.save();
-    Page testPage = new Page(testBook.getId(), "layout1");
+    Page testPage = new Page(testBook.getId(), "layout1", 1);
     testPage.save();
     ComicPanel testComicPanel = new ComicPanel(testPage.getId(), 2);
     testComicPanel.setImagePath("/img/bozo.jpg");
@@ -80,7 +80,7 @@ public class ComicPanelTest {
   public void getTexts_returnsTexts_true() {
     Book testBook = new Book("Jefferson Conflict", 1);
     testBook.save();
-    Page testPage = new Page(testBook.getId(), "layout1");
+    Page testPage = new Page(testBook.getId(), "layout1", 1);
     testPage.save();
     ComicPanel testComicPanel = new ComicPanel(testPage.getId(), 2);
     testComicPanel.setImagePath("/img/bozo.jpg");
@@ -97,7 +97,7 @@ public class ComicPanelTest {
   public void deleteTexts_deletesTexts_true() {
     Book testBook = new Book("Jefferson Conflict", 1);
     testBook.save();
-    Page testPage = new Page(testBook.getId(), "layout1");
+    Page testPage = new Page(testBook.getId(), "layout1", 1);
     testPage.save();
     ComicPanel testComicPanel = new ComicPanel(testPage.getId(), 2);
     testComicPanel.setImagePath("/img/bozo.jpg");
@@ -114,7 +114,7 @@ public class ComicPanelTest {
   public void delete_deletesPanelAndTexts_true() {
     Book testBook = new Book("Jefferson Conflict", 1);
     testBook.save();
-    Page testPage = new Page(testBook.getId(), "layout1");
+    Page testPage = new Page(testBook.getId(), "layout1", 1);
     testPage.save();
     ComicPanel testComicPanel = new ComicPanel(testPage.getId(), 2);
     testComicPanel.setImagePath("/img/bozo.jpg");
@@ -132,9 +132,9 @@ public class ComicPanelTest {
   public void update_updates_true() {
     Book testBook = new Book("Jefferson Conflict", 1);
     testBook.save();
-    Page firstPage = new Page(testBook.getId(), "layout1");
+    Page firstPage = new Page(testBook.getId(), "layout1", 1);
     firstPage.save();
-    Page secondPage = new Page(testBook.getId(), "layout1");
+    Page secondPage = new Page(testBook.getId(), "layout1", 2);
     secondPage.save();
     ComicPanel testComicPanel = new ComicPanel(firstPage.getId(), 2);
     testComicPanel.save();
