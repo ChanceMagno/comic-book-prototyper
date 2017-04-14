@@ -18,6 +18,9 @@ _This application allows users to create a Comic Book from scratch. Users will b
 ## Setup/Installation Requirements
 
 * _Clone the repository_
+* _Start postgres._
+* _Create databases 'comics' and 'comics_test'._
+* _Run the commands 'psql comics < comics.sql' and 'psql comics_test < comics_test.sql'._
 * _Run the command 'gradle run'_
 * _Open browser and go to localhost:4567_
 
