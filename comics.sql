@@ -210,8 +210,6 @@ ALTER TABLE ONLY texts ALTER COLUMN id SET DEFAULT nextval('texts_id_seq'::regcl
 --
 
 COPY books (id, title, user_id) FROM stdin;
-12	Breutal Sceptyr	1
-13	Quantum Entanglement	1
 \.
 
 
@@ -219,7 +217,7 @@ COPY books (id, title, user_id) FROM stdin;
 -- Name: books_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nathanielmeyer
 --
 
-SELECT pg_catalog.setval('books_id_seq', 13, true);
+SELECT pg_catalog.setval('books_id_seq', 15, true);
 
 
 --
@@ -227,10 +225,6 @@ SELECT pg_catalog.setval('books_id_seq', 13, true);
 --
 
 COPY pages (id, book_id, layout, sequence) FROM stdin;
-10	12	layout1	\N
-11	13	layout1	\N
-12	13	layout2	\N
-13	13	layout3	\N
 \.
 
 
@@ -238,7 +232,7 @@ COPY pages (id, book_id, layout, sequence) FROM stdin;
 -- Name: pages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nathanielmeyer
 --
 
-SELECT pg_catalog.setval('pages_id_seq', 13, true);
+SELECT pg_catalog.setval('pages_id_seq', 18, true);
 
 
 --
@@ -246,27 +240,6 @@ SELECT pg_catalog.setval('pages_id_seq', 13, true);
 --
 
 COPY panels (id, page_id, sequence, image_path) FROM stdin;
-48	10	0	/img/1629595269160771183.jpg
-49	10	1	/img/4432777549851579955.jpg
-53	10	5	/img/2427654794495525194.jpg
-50	10	2	/img/286307657388449940.jpg
-51	10	3	/img/8895353221432467078.jpg
-52	10	4	/img/3224127805726369760.jpg
-54	11	0	\N
-57	11	3	\N
-58	11	4	\N
-59	11	5	\N
-55	11	1	/img/2717427732738463082.jpg
-56	11	2	/img/6931987780896482075.jpg
-60	12	1	\N
-61	12	2	\N
-62	12	3	\N
-63	12	4	\N
-64	12	5	\N
-68	13	4	/img/739341713592227861.jpg
-65	13	1	/img/5279059317289059630.jpg
-66	13	2	/img/3784491405920851013.jpg
-67	13	3	/img/2060885277797053976.jpg
 \.
 
 
@@ -274,7 +247,7 @@ COPY panels (id, page_id, sequence, image_path) FROM stdin;
 -- Name: panels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nathanielmeyer
 --
 
-SELECT pg_catalog.setval('panels_id_seq', 68, true);
+SELECT pg_catalog.setval('panels_id_seq', 95, true);
 
 
 --
@@ -282,14 +255,6 @@ SELECT pg_catalog.setval('panels_id_seq', 68, true);
 --
 
 COPY texts (id, panel_id, sequence, body, box_style, font, orientation, speaker) FROM stdin;
-9	50	1	Left	\N	\N	topleft	\N
-10	51	1	Right	\N	\N	topright	\N
-8	48	1	Die, Nazi scum!	\N	\N	center	\N
-11	52	1	Draw something cool here.	\N	\N	center	\N
-12	54	1	kljfdsaljk	\N	\N	center	\N
-13	56	1	Cheese!	\N	\N	center	\N
-14	68	1	Blarg!	\N	\N	topright	\N
-15	65	1	sadfadsf	\N	\N	topleft	\N
 \.
 
 
@@ -297,7 +262,7 @@ COPY texts (id, panel_id, sequence, body, box_style, font, orientation, speaker)
 -- Name: texts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nathanielmeyer
 --
 
-SELECT pg_catalog.setval('texts_id_seq', 15, true);
+SELECT pg_catalog.setval('texts_id_seq', 16, true);
 
 
 --
