@@ -80,8 +80,16 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       Book book = Book.find(Integer.parseInt(request.params(":book_id")));
       Page page = Page.find(Integer.parseInt(request.params(":page_id")));
+      int previousId = 0;
+      if (page.getSequence() > 1) {
+      previousId = book.getPages().get(page.getSequence() - 2).getId();}
+      int nextId = 0;
+      if (page.getSequence() < book.getPages().size()){
+      nextId = book.getPages().get(page.getSequence()).getId();}
       model.put("page", page);
       model.put("book", book);
+      model.put("previousId", previousId);
+      model.put("nextId", nextId);
       model.put("panel", page.getPanels());
       String layoutSelected = page.getLayout();
       model.put("template", "templates/page-" + layoutSelected + ".vtl");
@@ -215,8 +223,16 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       Book book = Book.find(Integer.parseInt(request.params(":book_id")));
       Page page = Page.find(Integer.parseInt(request.params(":page_id")));
+      int previousId = 0;
+      if (page.getSequence() > 1) {
+      previousId = book.getPages().get(page.getSequence() - 2).getId();}
+      int nextId = 0;
+      if (page.getSequence() < book.getPages().size()){
+      nextId = book.getPages().get(page.getSequence()).getId();}
       model.put("page", page);
       model.put("book", book);
+      model.put("previousId", previousId);
+      model.put("nextId", nextId);
       model.put("panel", page.getPanels());
       String layoutSelected = page.getLayout();
       model.put("template", "templates/read-page-" + layoutSelected + ".vtl");

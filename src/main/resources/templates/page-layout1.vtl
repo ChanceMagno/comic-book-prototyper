@@ -105,8 +105,13 @@
     <div class="container">
       <div class="btn-group btn-group-justified">
         <a href="/" class="btn">Go Back</a>
-        <a href="/books/$book.getId()/pages/new" class="btn">Add Page</a>
-        <a href="/books/$book.getId()/pages/" class="btn">Next Page</a>
+        #if ($page.getSequence() > 1)
+        <a href="/books/$book.getId()/pages/$previousId" class="btn">Previous Page</a>
+        #end
+        <a href="/books/$book.getId()/pages/new" class="btn btn-primary">Add Page</a>
+        #if ($page.getSequence() < $book.getPages().size())
+        <a href="/books/$book.getId()/pages/$nextId" class="btn">Next Page</a>
+        #end
       </div>
     </div>
     <hr>

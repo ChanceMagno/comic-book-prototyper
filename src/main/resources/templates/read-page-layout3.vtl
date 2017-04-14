@@ -121,8 +121,12 @@
 <div class="container">
   <div class="btn-group btn-group-justified">
     <a href="/" class="btn">Go Back</a>
-    <a href="#" class="btn btn-success">Create Comic Book</a>
-    <a href="#" class="btn btn-primary">Add Page</a>
+    #if ($page.getSequence() > 1)
+    <a href="/reader/books/$book.getId()/pages/$previousId" class="btn">Previous Page</a>
+    #end
+    #if ($page.getSequence() < $book.getPages().size())
+    <a href="/reader/books/$book.getId()/pages/$nextId" class="btn">Next Page</a>
+    #end
   </div>
 </div>
 <hr>
